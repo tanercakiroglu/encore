@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+	<sec:global-method-security secured-annotations="enabled"  />
+	<sec:http pattern="/login"        security="none" />
+	<sec:http pattern="/signin"       security="none" />
+
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/user/**" access="ROLE_USER" />
+		<sec:custom-filter ref="ajaxSessionManagementFilter" before="SESSION_MANAGEMENT_FILTER" />
+		<sec:session-management invalid-session-url="/logout">
+			<sec:concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="false" expired-url="/logout" /> <!-- (1) (2) -->
+		</sec:session-management>
+		<sec:form-login login-page="/homepage"
+			authentication-failure-url="/loginError" />
+		<sec:logout logout-url="/logout" logout-success-url="/homepage"
+			delete-cookies="JSESSIONID" invalidate-session="true" />
+	</sec:http>
+
+	<bean id="ajaxSessionManagementFilter" class="configuration.AjaxRequestFilter">
+		<property name="invalidSessionUrl" value="/logout" />
+	</bean>
+
+	<bean id="userTokenFilter" class="configuration.AuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+	<bean id="customAuthenticationProvider" class="configuration.CustomAuthenticationProvider" />
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="customAuthenticationProvider" />
+	</sec:authentication-manager>
+
+
+</beans>
