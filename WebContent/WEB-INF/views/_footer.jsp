@@ -85,6 +85,7 @@
 <script src="../../resources/js/mail-script.js"></script>
 <script src="../../resources/vendors/popup/jquery.magnific-popup.min.js"></script>
 <script src="../../resources/js/theme.js"></script>
+<script src="../../resources/js/global.js"></script>
 </body>
 
 </html>

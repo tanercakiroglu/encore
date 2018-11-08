@@ -22,3 +22,6 @@ build/classes/META-INF/MANIFEST.MF
 /.settings/
 */.classpath
 /.classpath/
+.idea/*
+*/.iml
+*/iml
