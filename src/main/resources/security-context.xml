@@ -57,7 +57,7 @@
                 username-parameter="email"
                 password-parameter="password"
         />
-        <sec:logout logout-url="/logout"
+        <sec:logout logout-url="/app/logout" logout-success-url="/app/home"
                     delete-cookies="JSESSIONID" invalidate-session="true" />
         <sec:session-management invalid-session-url="/logout">
             <sec:concurrency-control max-sessions="1"

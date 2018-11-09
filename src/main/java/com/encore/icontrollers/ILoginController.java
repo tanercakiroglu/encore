@@ -15,14 +15,8 @@ public interface ILoginController {
 
 
 
-   /* @RequestMapping(value="/login",method = RequestMethod.POST,consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public @ResponseBody
-    ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response) ;
-*/
-    @Secured("ROLE_USER")
-    @RequestMapping(value="/secured/home",method = RequestMethod.GET)
-    public @ResponseBody
-    ModelAndView securedHome( HttpServletRequest request, HttpServletResponse response) ;
-
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+                              @RequestParam(value = "logout", required = false) String logout);
 
 }

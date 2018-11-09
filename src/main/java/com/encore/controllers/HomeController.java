@@ -5,6 +5,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.encore.icontrollers.IHomeController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,16 +24,12 @@ public class HomeController implements IHomeController {
     }
 
     @Override
-    public ModelAndView userHomeView() {
+    public ModelAndView securedHome(HttpServletRequest request, HttpServletResponse response) {
+
         Map<String,String> map = new HashMap<>();
-        map.put("token", "sfas");
+
+        map.put("token", "asd");
         return new ModelAndView("secured/home",map);
     }
 
-    @Override
-    public ModelAndView proposalHomeView() {
-        Map<String,String> map = new HashMap<>();
-        map.put("token", "sfas");
-        return new ModelAndView("secured/home",map);
-    }
 }

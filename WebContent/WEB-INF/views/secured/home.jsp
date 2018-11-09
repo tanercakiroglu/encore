@@ -10,14 +10,11 @@
 <html>
 <head>
 
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-	HOME SECURED
-	<input id="prodId" name="prodId" type="hidden" value="${model}">
-	
-	<button  type="submit" id="btn" class="btn submit_btn">Login</button>
 
+	SECUREDD AREAAA
 
 
 	<jsp:include page="../_footer.jsp"></jsp:include>

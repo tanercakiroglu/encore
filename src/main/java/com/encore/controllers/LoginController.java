@@ -23,37 +23,8 @@ import com.encore.iservices.ITokenService;
 @Controller
 public class LoginController implements ILoginController {
 
-    @Autowired
-    private ILoginService loginService;
 
-    @Autowired
-    private ITokenService tokenService;
-
-    @Autowired
-    private CustomAuthenticationProvider customAuthenticationProvider;
-
-
-
-   /* @Override
-    public ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response) {
-        User user = loginService.getUserByUsernameAndPassword(email,password);
-		if (user!=null) {
-
-			return new ModelAndView("/secured/home","model","");
-		} else
-			throw new BadCredentialsException("User Bad Credential");
-    }
-*/
     @Override
-    public ModelAndView securedHome(HttpServletRequest request, HttpServletResponse response) {
-    	
-    	Map<String,String> map = new HashMap<>();
-
-    	map.put("token", "asd");
-        return new ModelAndView("secured/home",map);
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout) {
 
@@ -71,14 +42,5 @@ public class LoginController implements ILoginController {
 
     }
 
-    @RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
-    public ModelAndView defaultPage() {
 
-        ModelAndView model = new ModelAndView();
-        model.addObject("title", "Spring Security Login Form - Database Authentication");
-        model.addObject("message", "This is default page!");
-        model.setViewName("hello");
-        return model;
-
-    }
 }
