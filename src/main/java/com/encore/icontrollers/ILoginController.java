@@ -13,16 +13,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ILoginController {
 
-    @RequestMapping(value="/",method = RequestMethod.GET)
-    public @ResponseBody
-    ModelAndView loginView() ;
 
-    @RequestMapping(value="/login",method = RequestMethod.POST,consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+
+   /* @RequestMapping(value="/login",method = RequestMethod.POST,consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public @ResponseBody
     ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response) ;
-
+*/
     @Secured("ROLE_USER")
-    @RequestMapping(value="/secured/home",method = RequestMethod.POST)
+    @RequestMapping(value="/secured/home",method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView securedHome( HttpServletRequest request, HttpServletResponse response) ;
+
+
 }

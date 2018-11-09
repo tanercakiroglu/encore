@@ -18,29 +18,7 @@
 	
 	<button  type="submit" id="btn" class="btn submit_btn">Login</button>
 
-	<section  id="sec" >
 
-		<div class="container ">
-			<div class="row">
-
-				<div class="col-sm-8">
-					<form id="loginForm" action="secured/user/proposal" method="get">
-
-						<div class="form-group">
-							<input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-						</div>
-						<div class="form-group text-right">
-							<button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Login</button>
-						</div>
-					</form>
-				</div>
-
-			</div>
-		</div>
-	</section>
 
 	<jsp:include page="../_footer.jsp"></jsp:include>
 <script src="../../../resources/js/pages/secured/home.js"></script>

@@ -138,7 +138,7 @@
 <!-- contact js -->
 <script src="../../resources/js/jquery.form.js"></script>
 <script src="../../resources/js/jquery.validate.min.js"></script>
-<script src="../../resources/js/pages/contact.js"></script>
+<script src="contact.js"></script>
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="../../resources/js/gmaps.min.js"></script>

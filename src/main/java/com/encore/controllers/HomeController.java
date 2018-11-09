@@ -22,8 +22,10 @@ public class HomeController implements IHomeController {
     }
 
     @Override
-    public String userHomeView() {
-        return "OK";
+    public ModelAndView userHomeView() {
+        Map<String,String> map = new HashMap<>();
+        map.put("token", "sfas");
+        return new ModelAndView("secured/home",map);
     }
 
     @Override

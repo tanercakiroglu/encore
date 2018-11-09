@@ -33,17 +33,18 @@
                     <div class="row">
 
                         <div class="col-sm-8">
-                            <form id="loginForm" action="/app/login" method="post">
+                            <form id="loginForm" action="<c:url value='/j_spring_security_check' />" method="post">
 
-                            <div class="form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                            </div>
-                            <div class="form-group text-right">
-                                <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Login</button>
-                            </div>
+
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                </div>
+                                <div class="form-group text-right">
+                                    <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Login</button>
+                                </div
                             </form>
                         </div>
 
