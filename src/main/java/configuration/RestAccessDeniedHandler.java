@@ -17,7 +17,13 @@ public class RestAccessDeniedHandler extends AccessDeniedHandlerImpl {
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception)
 			throws IOException, ServletException {
-		SecurityUtil.sendError(response, exception, HttpServletResponse.SC_FORBIDDEN, "Auth Failed");
+		 //SecurityUtil.sendError(response, exception, HttpServletResponse.SC_FORBIDDEN, "Auth Failed");
+		 try {
+				response.sendRedirect("403.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }

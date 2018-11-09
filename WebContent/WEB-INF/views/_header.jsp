@@ -8,33 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ page isELIgnored="false" %>
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/style.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/responsive.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/data-table.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/bootstrap.min.css">
-    <script type="text/javascript"
-            src="../../resources/js/jquery-3.3.1.js"></script>
-    <script type="text/javascript"
-            src="../../resources/js/data-table.js"></script>
-    <link rel="stylesheet" href="../../resources/css/bootstrap.css">
-    <link rel="stylesheet" href="../../resources/vendors/linericon/style.css">
-    <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="../../resources/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="../../resources/vendors/animate-css/animate.css">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="img/favicon.png" type="image/png">
+   
     <title>Maxitechture</title>
     <title>Title</title>
 </head>

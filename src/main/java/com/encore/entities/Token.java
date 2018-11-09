@@ -22,13 +22,13 @@ public class  Token implements Serializable {
     @Column(name = "SECRET_KEY")
     private String secretKey;
 
-    @Column(name = "USER_EMAIL")
+    @Column(name = "USER_NAME")
     private String userEmail;
 
     @Column(name = "CREATED_DATE")
     private Date createdDate;
 
-    @Column(name = "EXPIRE_DATE")
+    @Column(name = "EXPIRED_DATE")
     private Date expireDate;
 
     public Token() {}

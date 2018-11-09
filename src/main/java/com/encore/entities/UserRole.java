@@ -3,7 +3,7 @@ package com.encore.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name="user_roles")
 public class UserRole implements Serializable {
 
     /**
@@ -13,6 +13,7 @@ public class UserRole implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_role_id")
     private Long userRoleId;
 
     @Column(name = "username")

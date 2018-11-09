@@ -1,20 +1,23 @@
 package com.encore.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.encore.entities.User;
 import com.encore.icontrollers.ILoginController;
 import com.encore.iservices.ILoginService;
 import com.encore.iservices.ITokenService;
-import com.encore.requests.LoginRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@RestController
+@Controller
 public class LoginController implements ILoginController {
 
     @Autowired
@@ -34,23 +37,21 @@ public class LoginController implements ILoginController {
     }
 
     @Override
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password) {
+    public ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password,HttpServletRequest request, HttpServletResponse response) {
         User user = loginService.getUserByUsernameAndPassword(email,password);
-        if(loginService.getUserByUsername(email))
-            return "redirect:/app/secured/home";
-    	if(user!=null){
-           return "redirect:/app/secured/home";
-        }else
-        throw new BadCredentialsException("User Bad Credential");
+		if (user!=null) {
+			String token =tokenService.createAndSaveToken(user.getUsername());
+			return new ModelAndView("/secured/home","model",token);
+		} else
+			throw new BadCredentialsException("User Bad Credential");
     }
 
     @Override
-    public ModelAndView securedHome(LoginRequest request) {
-        Map<String,Object> model = new HashMap<>();
-
-
-        model.put("tovList","dsmfn");
-        model.put("vechList","ms fmas");
-        return new ModelAndView("login",model);
+    public ModelAndView securedHome(HttpServletRequest request, HttpServletResponse response) {
+    	
+    	Map<String,String> map = new HashMap<>();
+    	String header = request.getHeader("Location");
+    	map.put("token", header);
+        return new ModelAndView("secured/home",map);
     }
 }

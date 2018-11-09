@@ -22,7 +22,14 @@ public class HomeController implements IHomeController {
     }
 
     @Override
-    public ModelAndView userHomeView() {
-        return null;
+    public String userHomeView() {
+        return "OK";
+    }
+
+    @Override
+    public ModelAndView proposalHomeView() {
+        Map<String,String> map = new HashMap<>();
+        map.put("token", "sfas");
+        return new ModelAndView("secured/home",map);
     }
 }

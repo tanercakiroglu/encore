@@ -1,5 +1,7 @@
 package configuration;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +10,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import exceptions.BusinessException;
 import util.JSONUtil;
@@ -65,10 +66,16 @@ public class GlobalExceptionHandler {
              return JSONUtil.getJSONResultWithSystemError(exceptionMsg);
          }
          else{
+        	 try {
+				response.sendRedirect("403.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
              response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
          }
-         return new ModelAndView("contact");
+         return response;
     }
 
     private Object handleBusinessException(HttpServletRequest req, HttpServletResponse response, String exceptionMsg) {

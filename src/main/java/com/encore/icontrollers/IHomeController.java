@@ -11,7 +11,11 @@ public interface IHomeController {
     public @ResponseBody
     ModelAndView homeView() ;
 
-    @RequestMapping(value="/user/home",method = RequestMethod.GET)
+    @RequestMapping(value="/secured/user/home",method = RequestMethod.GET)
     public @ResponseBody
-    ModelAndView userHomeView() ;
+    String userHomeView() ;
+
+    @RequestMapping(value="/secured/user/proposal",method = RequestMethod.GET)
+    public @ResponseBody
+    ModelAndView proposalHomeView() ;
 }
