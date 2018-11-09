@@ -46,7 +46,7 @@
     <sec:http auto-config="true" use-expressions="true">
 
         <sec:intercept-url pattern="/app/secured/**" access="hasRole('ROLE_USER')" />
-        <!-- <sec:custom-filter ref="ajaxSessionManagementFilter" before="SESSION_MANAGEMENT_FILTER" />-->
+        <sec:custom-filter ref="ajaxSessionManagementFilter" before="SESSION_MANAGEMENT_FILTER" />
         <!-- access denied page -->
         <sec:access-denied-handler error-page="/403" />
         <sec:form-login
