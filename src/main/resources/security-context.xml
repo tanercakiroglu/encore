@@ -20,30 +20,44 @@
 	http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-	<sec:global-method-security secured-annotations="enabled"  />
-	<sec:http pattern="/login"        security="none" />
-	<sec:http pattern="/signin"       security="none" />
 
-	<sec:http auto-config="true">
-		<sec:intercept-url pattern="/user/**" access="ROLE_USER" />
-		<sec:custom-filter ref="ajaxSessionManagementFilter" before="SESSION_MANAGEMENT_FILTER" />
-		<sec:session-management invalid-session-url="/logout">
-			<sec:concurrency-control max-sessions="1"
-				error-if-maximum-exceeded="false" expired-url="/logout" /> <!-- (1) (2) -->
-		</sec:session-management>
-		<sec:form-login login-page="/homepage"
-			authentication-failure-url="/loginError" />
-		<sec:logout logout-url="/logout" logout-success-url="/homepage"
-			delete-cookies="JSESSIONID" invalidate-session="true" />
-	</sec:http>
 
-	<bean id="ajaxSessionManagementFilter" class="configuration.AjaxRequestFilter">
+
+    <bean id="restAccessDeniedHandler"
+                class="configuration.RestAccessDeniedHandler" />
+    <bean id="restAuthenticationFailureHandler"
+                class="configuration.RestAuthenticationFailureHandler" />
+    <bean id="restAuthenticationSuccessHandler"
+                class="configuration.RestAuthenticationSuccessHandler" />
+
+
+    <sec:global-method-security secured-annotations="enabled"  />
+    <sec:http pattern="/app/login"        security="none" />
+    <sec:http pattern="/app/signin"       security="none" />
+
+    <sec:http pattern="/app/secured/**"   entry-point-ref="restUnauthorizedEntryPoint" create-session="stateless">
+        <sec:custom-filter ref="userTokenFilter" before="BASIC_AUTH_FILTER" />
+        <sec:access-denied-handler ref="restAccessDeniedHandler" />
+
+    </sec:http>
+
+
+    <bean id="restUnauthorizedEntryPoint"             class="configuration.RestUnauthorizedEntryPoint" />
+
+
+
+    <bean id="userTokenFilter"  class="configuration.AuthenticationFilter">
+        <property name="authenticationManager"        ref="authenticationManager" />
+        <property name="authenticationFailureHandler" ref="restAuthenticationFailureHandler" />
+        <property name="authenticationSuccessHandler" ref="restAuthenticationSuccessHandler" />
+    </bean>
+
+
+    <bean id="ajaxSessionManagementFilter" class="configuration.AjaxRequestFilter">
 		<property name="invalidSessionUrl" value="/logout" />
 	</bean>
 
-	<bean id="userTokenFilter" class="configuration.AuthenticationFilter">
-		<property name="authenticationManager" ref="authenticationManager" />
-	</bean>
+
 	<bean id="customAuthenticationProvider" class="configuration.CustomAuthenticationProvider" />
 
 	<sec:authentication-manager alias="authenticationManager">

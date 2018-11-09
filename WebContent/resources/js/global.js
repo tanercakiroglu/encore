@@ -6,9 +6,9 @@ function getToken() {
 
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-        xhr.setRequestHeader("bearer ", getToken());
+        xhr.setRequestHeader("bearer", " " +getToken());
         xhr.setRequestHeader("faces-request", "partial/ajax");
      }
    });
 
-}
+})

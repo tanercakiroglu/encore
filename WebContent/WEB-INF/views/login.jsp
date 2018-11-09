@@ -27,13 +27,13 @@
     <div class="banner_inner">
         <div class="container ">
 
-            <section  id="loginForm" >
+            <section  id="sec" >
 
                 <div class="container ">
                     <div class="row">
 
                         <div class="col-sm-8">
-
+                            <form id="loginForm" action="/app/login" method="post">
 
                             <div class="form-group">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
@@ -42,9 +42,9 @@
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                             </div>
                             <div class="form-group text-right">
-                                <button type="submit" value="submit" class="btn submit_btn">Login</button>
+                                <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Login</button>
                             </div>
-
+                            </form>
                         </div>
 
                     </div>
@@ -54,6 +54,40 @@
     </div>
 </section>
 
+<div id="success" class="modal modal-message fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h2>Thank you</h2>
+                <p>Your message is successfully sent...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals error -->
+
+<div id="error" class="modal modal-message fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h2>Sorry !</h2>
+                <p> Something went wrong </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <jsp:include page="_footer.jsp"></jsp:include>
+<script src="../../resources/js/jquery.form.js"></script>
+<script src="../../resources/js/jquery.validate.min.js"></script>
+<script src="../../resources/js/pages/login.js"></script>
 </body>
 </html>

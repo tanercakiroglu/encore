@@ -9,4 +9,5 @@ import com.encore.entities.User;
 @Repository
 public interface IUserRepo extends JpaRepository<User, String>{
     User findByUsername(String username);
+    User findByUsernameAndPassword(String username,String password);
 }

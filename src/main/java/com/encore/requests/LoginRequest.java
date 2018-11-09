@@ -1,5 +1,11 @@
 package com.encore.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.beans.factory.annotation.Value;
+
+
+
+@JsonDeserialize
 public class LoginRequest {
 	
 	private String username;
@@ -10,6 +16,10 @@ public class LoginRequest {
 		super();
 	}
 
+	public LoginRequest(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
 	public String getUsername() {
 		return username;
