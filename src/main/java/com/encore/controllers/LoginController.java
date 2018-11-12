@@ -1,24 +1,9 @@
 package com.encore.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import configuration.CustomAuthenticationProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
+import com.encore.icontrollers.ILoginController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.encore.entities.User;
-import com.encore.icontrollers.ILoginController;
-import com.encore.iservices.ILoginService;
-import com.encore.iservices.ITokenService;
 
 @Controller
 public class LoginController implements ILoginController {
@@ -43,7 +28,17 @@ public class LoginController implements ILoginController {
     }
 
     @Override
-    public ModelAndView login() {
+    public ModelAndView internalError() {
+        return new ModelAndView("500");
+    }
+
+    @Override
+    public ModelAndView notFound() {
+        return new ModelAndView("404");
+    }
+
+    @Override
+    public ModelAndView forbidden() {
         return new ModelAndView("403");
     }
 

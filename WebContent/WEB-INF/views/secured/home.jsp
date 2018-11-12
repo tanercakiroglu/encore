@@ -18,6 +18,6 @@
 
 
 	<jsp:include page="../_footer.jsp"></jsp:include>
-<script src="../../../resources/js/pages/secured/home.js"></script>
+<script src="../../../resources/js/pages/secured/home.js" type="text/javascript"></script>
 </body>
 </html>

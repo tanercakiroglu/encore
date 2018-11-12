@@ -10,31 +10,31 @@
 <head>
  <%@ page isELIgnored="false" %>
     <link rel="stylesheet" type="text/css"
-          href="../../resources/css/style.css">
+          href="/statics/css/style.css">
     <link rel="stylesheet" type="text/css"
-          href="../../resources/css/responsive.css">
+          href="/statics/css/responsive.css">
     <link rel="stylesheet" type="text/css"
-          href="../../resources/css/font-awesome.min.css">
+          href="/statics/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css"
-          href="../../resources/css/data-table.css">
+          href="/statics/css/data-table.css">
     <link rel="stylesheet" type="text/css"
-          href="../../resources/css/bootstrap.min.css">
+          href="/statics/css/bootstrap.min.css">
     <script type="text/javascript"
-            src="../../resources/js/jquery-3.3.1.js"></script>
+            src="/statics/js/jquery-3.3.1.js"></script>
     <script type="text/javascript"
-            src="../../resources/js/data-table.js"></script>
-    <link rel="stylesheet" href="../../resources/css/bootstrap.css">
-    <link rel="stylesheet" href="../../resources/vendors/linericon/style.css">
-    <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="../../resources/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="../../resources/vendors/animate-css/animate.css">
+            src="/statics/js/data-table.js"></script>
+    <link rel="stylesheet" href="/statics/css/bootstrap.css">
+    <link rel="stylesheet" href="/statics/vendors/linericon/style.css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/statics/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/statics/vendors/lightbox/simpleLightbox.css">
+    <link rel="stylesheet" href="/statics/vendors/nice-select/css/nice-select.css">
+    <link rel="stylesheet" href="/statics/vendors/animate-css/animate.css">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../../resources/img/favicon.png" type="image/png">
+    <link rel="icon" href="/statics/img/favicon.png" type="image/png">
 </head>
 <body>
 <!--================Footer Area =================-->
@@ -96,22 +96,22 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../../resources/js/jquery-3.2.1.min.js"></script>
-<script src="../../resources/js/popper.js"></script>
-<script src="../../resources/js/bootstrap.min.js"></script>
-<script src="../../resources/js/stellar.js"></script>
-<script src="../../resources/vendors/lightbox/simpleLightbox.min.js"></script>
-<script src="../../resources/vendors/nice-select/js/jquery.nice-select.min.js"></script>
-<script src="../../resources/vendors/isotope/imagesloaded.pkgd.min.js"></script>
-<script src="../../resources/vendors/isotope/isotope-min.js"></script>
-<script src="../../resources/vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="../../resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="../../resources/vendors/counter-up/jquery.waypoints.min.js"></script>
-<script src="../../resources/vendors/counter-up/jquery.counterup.js"></script>
-<script src="../../resources/js/mail-script.js"></script>
-<script src="../../resources/vendors/popup/jquery.magnific-popup.min.js"></script>
-<script src="../../resources/js/theme.js"></script>
-<script src="../../resources/js/global.js"></script>
+<script src="/statics/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="/statics/js/popper.js" type="text/javascript"></script>
+<script src="/statics/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/statics/js/stellar.js" type="text/javascript"></script>
+<script src="/statics/vendors/lightbox/simpleLightbox.min.js" type="text/javascript"></script>
+<script src="/statics/vendors/nice-select/js/jquery.nice-select.min.js" type="text/javascript"></script>
+<script src="/statics/vendors/isotope/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<script src="/statics/vendors/isotope/isotope-min.js" type="text/javascript"></script>
+<script src="/statics/vendors/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+<script src="/statics/js/jquery.ajaxchimp.min.js" type="text/javascript"></script>
+<script src="/statics/vendors/counter-up/jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="/statics/vendors/counter-up/jquery.counterup.js" type="text/javascript"></script>
+<script src="/statics/js/mail-script.js" type="text/javascript"></script>
+<script src="/statics/vendors/popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+<script src="/statics/js/theme.js" type="text/javascript"></script>
+<script src="/statics/js/global.js" type="text/javascript"></script>
 </body>
 
 </html>

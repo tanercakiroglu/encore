@@ -16,8 +16,11 @@ public interface IHomeController {
     ModelAndView homeView() ;
 
     @Secured("ROLE_USER")
-    @RequestMapping(value="/secured/home",method = RequestMethod.GET)
+    @RequestMapping(value="/secured/user/home",method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView securedHome(HttpServletRequest request, HttpServletResponse response) ;
 
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/secured/admin/home", method = RequestMethod.GET)
+    public ModelAndView admin();
 }

@@ -6,8 +6,6 @@ import com.encore.irepos.IUserRoleRepo;
 import com.encore.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,8 +38,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
        if(userDb!=null){
            UserRole role = userRoleRepo.findByUsername(userDb.getUsername());
            if(role !=null) {
-               Collection<SimpleGrantedAuthority> grantedAuth = new ArrayList<>();
-               grantedAuth.add(new SimpleGrantedAuthority(role.getRole()));
+               String[] splitRoles = role.getRole().split(",");
+                   Collection<SimpleGrantedAuthority>   grantedAuth = new ArrayList<>();
+                   for(String item :splitRoles){
+                        grantedAuth.add(new SimpleGrantedAuthority(item));
+                   }
                return new UsernamePasswordAuthenticationToken(userDb, password,grantedAuth);
            }else{
                throw new BadCredentialsException("Bad Credentials");

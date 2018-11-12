@@ -32,4 +32,12 @@ public class HomeController implements IHomeController {
         return new ModelAndView("secured/home",map);
     }
 
+    @Override
+    public ModelAndView admin() {
+        Map<String,String> map = new HashMap<>();
+
+        map.put("token", "asd");
+        return new ModelAndView("secured/admin",map);
+    }
+
 }

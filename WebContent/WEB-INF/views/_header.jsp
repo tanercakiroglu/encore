@@ -9,32 +9,26 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/style.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/responsive.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/data-table.css">
-    <link rel="stylesheet" type="text/css"
-          href="../../resources/css/bootstrap.min.css">
-    <script type="text/javascript"
-            src="../../resources/js/jquery-3.3.1.js"></script>
-    <script type="text/javascript"
-            src="../../resources/js/data-table.js"></script>
-    <link rel="stylesheet" href="../../resources/css/bootstrap.css">
-    <link rel="stylesheet" href="../../resources/vendors/linericon/style.css">
-    <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../resources/vendors/lightbox/simpleLightbox.css">
-    <link rel="stylesheet" href="../../resources/vendors/nice-select/css/nice-select.css">
-    <link rel="stylesheet" href="../../resources/vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css"      href="/statics/css/style.css">
+    <link rel="stylesheet" type="text/css"      href="/statics/css/responsive.css">
+    <link rel="stylesheet" type="text/css"      href="/statics/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"      href="/statics/css/data-table.css">
+    <link rel="stylesheet" type="text/css"href="/statics/css/bootstrap.min.css">
+    <script type="text/javascript" src="/statics/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/statics/js/data-table.js"></script>
+    <link rel="stylesheet" href="/statics/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/statics/vendors/linericon/style.css" type="text/css">
+    <link rel="stylesheet" href="/statics/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/statics/vendors/owl-carousel/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/statics/vendors/lightbox/simpleLightbox.css" type="text/css">
+    <link rel="stylesheet" href="/statics/vendors/nice-select/css/nice-select.css"type="text/css">
+    <link rel="stylesheet" href="/statics/vendors/animate-css/animate.css" type="text/css">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../../resources/img/favicon.png" type="image/png">
+    <link rel="icon" href="../../statics
+    /img/favicon.png" type="image/png">
 </head>
 <body>
 <!--================Header Menu Area =================-->
@@ -43,7 +37,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container box_1620">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="index.html"><img src="../../resources/img/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="index.html"><img src="/statics/img/logo.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

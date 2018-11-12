@@ -1,14 +1,8 @@
 package com.encore.icontrollers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.http.MediaType;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface ILoginController {
@@ -21,6 +15,14 @@ public interface ILoginController {
 
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public ModelAndView login();
+    public ModelAndView forbidden();
+
+    @RequestMapping(value = "/500", method = RequestMethod.GET)
+    public ModelAndView internalError();
+
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public ModelAndView notFound();
+
+
 
 }

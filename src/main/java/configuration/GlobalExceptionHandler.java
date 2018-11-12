@@ -1,20 +1,16 @@
 package configuration;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import exceptions.BusinessException;
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import exceptions.BusinessException;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.servlet.ModelAndView;
 import util.JSONUtil;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @ControllerAdvice(basePackages= {"com.encore.controllers"})
 public class GlobalExceptionHandler {
@@ -43,7 +39,6 @@ public class GlobalExceptionHandler {
     }
 
 
-
     private Object handleException(HttpServletRequest req, HttpServletResponse response, String exceptionMsg) {
 
 
@@ -54,11 +49,7 @@ public class GlobalExceptionHandler {
             return JSONUtil.getJSONResultWithSystemError(exceptionMsg);
         }
         else{
-            RedirectView rv = new RedirectView();
-            rv.setUrl("app/500");
-            rv.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
-            return rv;
-
+            return new ModelAndView("500");
         }
 
     }
@@ -71,10 +62,7 @@ public class GlobalExceptionHandler {
              return JSONUtil.getJSONResultWithSystemError(exceptionMsg);
          }
          else{
-                 RedirectView rv = new RedirectView();
-                 rv.setUrl("app/403");
-                 rv.setStatusCode(HttpStatus.FORBIDDEN);
-                 return rv;
+             return new ModelAndView("403");
          }
     }
 
