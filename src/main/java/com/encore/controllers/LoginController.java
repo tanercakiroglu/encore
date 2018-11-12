@@ -42,5 +42,10 @@ public class LoginController implements ILoginController {
 
     }
 
+    @Override
+    public ModelAndView login() {
+        return new ModelAndView("403");
+    }
+
 
 }

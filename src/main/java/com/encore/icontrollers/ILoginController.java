@@ -19,4 +19,8 @@ public interface ILoginController {
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout);
 
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public ModelAndView login();
+
 }

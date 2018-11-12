@@ -6,12 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import exceptions.BusinessException;
+import org.springframework.web.servlet.view.RedirectView;
 import util.JSONUtil;
 
 @ControllerAdvice(basePackages= {"com.encore.controllers"})
@@ -52,9 +54,12 @@ public class GlobalExceptionHandler {
             return JSONUtil.getJSONResultWithSystemError(exceptionMsg);
         }
         else{
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            RedirectView rv = new RedirectView();
+            rv.setUrl("app/500");
+            rv.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+            return rv;
+
         }
-        return response;
 
     }
     private Object handleBadCredentialException(HttpServletRequest req, HttpServletResponse response,
@@ -62,20 +67,15 @@ public class GlobalExceptionHandler {
     	 String ajaxHeader = req.getHeader(AJAX_HEADER);
 
          if (AJAX_HEADER_VALUE.equals(ajaxHeader)) {
-             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
              return JSONUtil.getJSONResultWithSystemError(exceptionMsg);
          }
          else{
-        	 try {
-				response.sendRedirect("403.jsp");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
+                 RedirectView rv = new RedirectView();
+                 rv.setUrl("app/403");
+                 rv.setStatusCode(HttpStatus.FORBIDDEN);
+                 return rv;
          }
-         return response;
     }
 
     private Object handleBusinessException(HttpServletRequest req, HttpServletResponse response, String exceptionMsg) {
