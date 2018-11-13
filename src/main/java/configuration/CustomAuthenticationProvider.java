@@ -50,7 +50,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
        }
        throw new BadCredentialsException("Bad Credential");
     }
-
-
-
 }

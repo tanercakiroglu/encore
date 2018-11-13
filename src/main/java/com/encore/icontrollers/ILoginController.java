@@ -10,18 +10,18 @@ public interface ILoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+    ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout);
 
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public ModelAndView forbidden();
+    ModelAndView forbidden();
 
     @RequestMapping(value = "/500", method = RequestMethod.GET)
-    public ModelAndView internalError();
+    ModelAndView internalError();
 
     @RequestMapping(value = "/404", method = RequestMethod.GET)
-    public ModelAndView notFound();
+    ModelAndView notFound();
 
 
 

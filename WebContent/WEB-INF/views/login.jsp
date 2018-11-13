@@ -87,8 +87,7 @@
 
 
 <jsp:include page="_footer.jsp"></jsp:include>
-<script src="../../resources/js/jquery.form.js"></script>
-<script src="../../resources/js/jquery.validate.min.js"></script>
+
 <script src="../../resources/js/pages/login.js"></script>
 </body>
 </html>

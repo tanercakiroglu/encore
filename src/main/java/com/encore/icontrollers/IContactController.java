@@ -8,6 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public interface IContactController {
 
     @RequestMapping(value="/contact",method = RequestMethod.GET)
-    public @ResponseBody
+     @ResponseBody
     ModelAndView loginView() ;
 }

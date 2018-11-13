@@ -7,6 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface ILogoutController {
     @RequestMapping(value="/logout",method = RequestMethod.GET)
-    public @ResponseBody
+    @ResponseBody
     ModelAndView logoutView() ;
 }

@@ -265,6 +265,41 @@ button:focus {
 /*----------------------------------------------------*/
 /* Home Banner Area css
 ============================================================================================ */
+.home_banner_area_sec {
+  z-index: 1;
+  background: url(../img/banner/secured-banner.PNG) no-repeat scroll center center;
+  background-size: cover;
+  background-position: top;
+  }
+.home_banner_area_sec .banner_inner {
+  overflow: hidden;
+  width: 100%;
+  padding: 40px 0px 40px 0px;
+  background: #000000a6;
+}
+.home_banner_area_sec .banner_inner .banner_content {
+  color: #fff; }
+.home_banner_area_sec .banner_inner .banner_content .col-lg-9 {
+  vertical-align: middle;
+  align-self: center; }
+.home_banner_area_sec .banner_inner .banner_content h2 {
+  font-size: 48px;
+  font-weight: bold;
+  font-family: "Heebo", sans-serif;
+  line-height: 60px;
+  text-transform: uppercase;
+  margin-bottom: 15px; }
+.home_banner_area_sec .banner_inner .banner_content p {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  max-width: 565px;
+  margin-bottom: 40px;
+  line-height: 26px;
+  font-size: 16px; }
+.home_banner_area_sec .banner_inner .banner_content .banner_map_img {
+  text-align: right; }
+
 .home_banner_area {
   z-index: 1;
   background: url(../img/banner/home-banner.jpg) no-repeat scroll center center;
@@ -2914,6 +2949,10 @@ h6 {
   .copy_right_text p a {
     color: #a7cb00; }
 
+#main .container:first-child {
+  border-top: medium none;
+  margin-top: 30px;
+}
 /* End Footer Area css
 ============================================================================================ */
 /*---------------------------------------------------- */
