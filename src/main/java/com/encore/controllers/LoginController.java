@@ -1,19 +1,12 @@
 package com.encore.controllers;
 
 import com.encore.icontrollers.ILoginController;
-import com.encore.services.LoginService;
-import com.encore.services.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController implements ILoginController {
-
-    @Autowired
-    private TokenService loginService;
 
     @Override
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
