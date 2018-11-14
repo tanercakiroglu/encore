@@ -38,7 +38,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container box_1620">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="index.html"><img src="/statics/img/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="index.html"><img src="/statics/img/logo.PNG" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -50,20 +50,20 @@
                         <security:authorize access="isAuthenticated()">
                             <li class="nav-item"><a class="nav-link" href="#">Welcome  <security:authentication property="principal.username" /></a></li>
                         </security:authorize>
-                        <li class="nav-item active"><a class="nav-link" href="home">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/home">Home</a></li>
                         <security:authorize access="!isAuthenticated()">
-                        <li class="nav-item"><a class="nav-link" href="login">Login</a>
-                        <li class="nav-item"><a class="nav-link" href="about">About</a>
-                        <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/login">Login</a>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/about">About</a>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/contact">Contact</a></li>
                         </security:authorize>
                         <security:authorize access="isAuthenticated()">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="employee">Employees</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/admin/employee">Employees</a></li>
                         </security:authorize>
-                            <li class="nav-item"><a class="nav-link" href="project">Projects</a></li>
-                            <li class="nav-item"><a class="nav-link" href="proposal">Proposals</a></li>
-                            <li class="nav-item"><a class="nav-link" href="product">Products</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/project">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/proposal">Proposals</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/product">Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/logout">Logout</a></li>
 
                         </security:authorize>
                     </ul>
