@@ -80,6 +80,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-size: x-small;
 }
 .datepicker table tr td,
 .datepicker table tr th {

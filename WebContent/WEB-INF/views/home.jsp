@@ -17,7 +17,7 @@
     <title>Title</title>
 
 </head>
-<body data-spy="scroll" data-target="#mainNav" data-offset="70">
+<body>
 
 <!--================Header Menu Area =================-->
 <section id="nav">
@@ -50,7 +50,7 @@
         <div class="feature_inner row">
             <div class="col-lg-4">
                 <div class="feature_item">
-                    <img src="../../resources/img/icon/f-icon-1.png" alt="">
+                    <img src="/statics/img/icon/f-icon-1.png" alt="">
                     <h4>Architecture</h4>
                     <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
                     <a class="main_btn" href="#">View Details</a>
@@ -58,7 +58,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="feature_item">
-                    <img src="../../resources/img/icon/f-icon-2.png" alt="">
+                    <img src="/statics/img/icon/f-icon-2.png" alt="">
                     <h4>Interior Design</h4>
                     <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
                     <a class="main_btn" href="#">View Details</a>
@@ -66,7 +66,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="feature_item">
-                    <img src="../../resources/img/icon/f-icon-3.png" alt="">
+                    <img src="/statics/img/icon/f-icon-3.png" alt="">
                     <h4>Concept Design</h4>
                     <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $17 each.</p>
                     <a class="main_btn" href="#">View Details</a>

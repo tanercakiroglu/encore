@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<html>
+<html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
     <link rel="stylesheet" type="text/css"      href="/statics/css/style.css">
@@ -25,37 +25,13 @@
     <link rel="stylesheet" href="/statics/vendors/animate-css/animate.css" type="text/css">
     <link rel="stylesheet" href="/statics/css/datepicker.css">
     <link rel="stylesheet" href="/statics/css/jquery-ui.min.css">
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="/statics/js/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="/statics/js/data-table.js"></script>
-    <script src="/statics/js/popper.js" type="text/javascript"></script>
-    <script src="/statics/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/statics/js/stellar.js" type="text/javascript"></script>
-    <script src="/statics/vendors/lightbox/simpleLightbox.min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/nice-select/js/jquery.nice-select.min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/isotope/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/isotope/isotope-min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
-    <script src="/statics/js/jquery.ajaxchimp.min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/counter-up/jquery.waypoints.min.js" type="text/javascript"></script>
-    <script src="/statics/vendors/counter-up/jquery.counterup.js" type="text/javascript"></script>
-    <script src="/statics/js/mail-script.js" type="text/javascript"></script>
-    <script src="/statics/vendors/popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
-    <script src="/statics/js/theme.js" type="text/javascript"></script>
-    <script src="/statics/js/global.js" type="text/javascript"></script>
-    <script src="/statics/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="/statics/js/bootstrap-datepicker.tr.js" type="text/javascript"></script>
-    <script src="/statics/js/jquery.form.js"></script>
-    <script src="/statics/js/jquery.validate.min.js"></script>
-
+    <link rel="stylesheet" href="/statics/css/bootstrap-datatable.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/statics/img/favicon.png" type="image/png">
 </head>
-<body>
+<body  data-spy="scroll" data-target="#mainNav" data-offset="70">
 <!--================Header Menu Area =================-->
 <header class="header_area">
     <div class="main_menu" id="mainNav">
@@ -71,12 +47,24 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
+                        <security:authorize access="isAuthenticated()">
+                            <li class="nav-item"><a class="nav-link" href="#">Welcome  <security:authentication property="principal.username" /></a></li>
+                        </security:authorize>
                         <li class="nav-item active"><a class="nav-link" href="home">Home</a></li>
+                        <security:authorize access="!isAuthenticated()">
                         <li class="nav-item"><a class="nav-link" href="login">Login</a>
                         <li class="nav-item"><a class="nav-link" href="about">About</a>
                         <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+                        </security:authorize>
                         <security:authorize access="isAuthenticated()">
-                            <li class="nav-item"><a class="nav-link" href="#"><security:authentication property="principal.username" /></a></li>
+                        <security:authorize access="hasRole('ROLE_ADMIN')">
+                            <li class="nav-item"><a class="nav-link" href="employee">Employees</a></li>
+                        </security:authorize>
+                            <li class="nav-item"><a class="nav-link" href="project">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="proposal">Proposals</a></li>
+                            <li class="nav-item"><a class="nav-link" href="product">Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../logout">Logout</a></li>
+
                         </security:authorize>
                     </ul>
                 </div>
@@ -84,6 +72,8 @@
         </nav>
     </div>
 </header>
+
+
 
 </body>
 </html>

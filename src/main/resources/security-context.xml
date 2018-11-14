@@ -58,19 +58,19 @@
                 username-parameter="email"
                 password-parameter="password"
         />
-        <sec:logout logout-url="/app/logout" logout-success-url="/app/home"
+        <sec:logout logout-url="/app/secured/logout" logout-success-url="/app/home"
                     delete-cookies="JSESSIONID" invalidate-session="true" />
-        <sec:session-management invalid-session-url="/app/logout">
+        <sec:session-management invalid-session-url="/app/secured/logout">
             <sec:concurrency-control max-sessions="1"
                                  error-if-maximum-exceeded="false"
-                                 expired-url="/app/logout" /> <!-- (1) (2) -->
+                                 expired-url="/app/secured/logout" /> <!-- (1) (2) -->
         </sec:session-management>
 
         <sec:csrf disabled="true"/>
     </sec:http>
 
     <bean id="ajaxSessionManagementFilter" class="configuration.AjaxRequestFilter">
-        <property name="invalidSessionUrl" value="/app/logout" />
+        <property name="invalidSessionUrl" value="/app/secured/logout" />
     </bean>
 
 	<bean id="customAuthenticationProvider" class="configuration.CustomAuthenticationProvider" />

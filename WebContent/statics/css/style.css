@@ -196,7 +196,7 @@ button:focus {
             .header_area .navbar .nav .nav-item.submenu ul .nav-item .nav-link {
               line-height: 45px;
               color: #222222;
-              padding: 0px 30px;
+              padding: 0px 0px;
               transition: all 150ms linear;
               display: block;
               margin-right: 0px; }
@@ -2952,6 +2952,32 @@ h6 {
 #main .container:first-child {
   border-top: medium none;
   margin-top: 30px;
+}
+
+.loader {
+  display:    none;
+  position:   fixed;
+  z-index:    1000;
+  top:        0;
+  left:       0;
+  height:     100%;
+  width:      100%;
+  background: rgba( 255, 255, 255, .8 )
+  url('/statics/img/1.gif')
+  50% 50%
+  no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .loader {
+  overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .loader {
+  display: block;
 }
 /* End Footer Area css
 ============================================================================================ */

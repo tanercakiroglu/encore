@@ -100,48 +100,16 @@
 <!--================Contact Area =================-->
 
 
-<!--================Contact Success and Error message Area =================-->
-<div id="success" class="modal modal-message fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </button>
-                <h2>Thank you</h2>
-                <p>Your message is successfully sent...</p>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Modals error -->
-
-<div id="error" class="modal modal-message fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </button>
-                <h2>Sorry !</h2>
-                <p> Something went wrong </p>
-            </div>
-        </div>
-    </div>
-</div>
 
 <jsp:include page="_footer.jsp"></jsp:include>
 
 </body>
 
-<!-- contact js -->
-<script src="../../resources/js/jquery.form.js"></script>
-<script src="../../resources/js/jquery.validate.min.js"></script>
-<script src="contact.js"></script>
+
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-<script src="../../resources/js/gmaps.min.js"></script>
-<script src="../../resources/js/theme.js"></script>
+<script src="/statics/js/gmaps.min.js"></script>
+<script src="/statics/js/theme.js"></script>
 </html>
 <!--================End Contact Success and Error message Area =================-->

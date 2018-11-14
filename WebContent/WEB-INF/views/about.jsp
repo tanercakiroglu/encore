@@ -42,7 +42,7 @@
     <div class="container">
         <div class="design_inner row">
             <div class="col-lg-5">
-                <img class="img-fluid" src="../../resources/img/design-1.jpg" alt="">
+                <img class="img-fluid" src="/statics/img/design-1.jpg" alt="">
             </div>
             <div class="col-lg-7">
                 <div class="design_left_text">
@@ -68,7 +68,7 @@
         <div class="item">
             <div class="post_s_item">
                 <div class="post_img">
-                    <img src="../../resources/img/post-slider/post-s-1.jpg" alt="">
+                    <img src="/statics/img/post-slider/post-s-1.jpg" alt="">
                 </div>
                 <div class="post_text">
                     <a href="single-blog.html"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
@@ -80,7 +80,7 @@
         <div class="item">
             <div class="post_s_item">
                 <div class="post_img">
-                    <img src="../../resources/img/post-slider/post-s-2.jpg" alt="">
+                    <img src="/statics/img/post-slider/post-s-2.jpg" alt="">
                 </div>
                 <div class="post_text">
                     <a href="single-blog.html"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
@@ -92,7 +92,7 @@
         <div class="item">
             <div class="post_s_item">
                 <div class="post_img">
-                    <img src="../../resources/img/post-slider/post-s-3.jpg" alt="">
+                    <img src="/statics/img/post-slider/post-s-3.jpg" alt="">
                 </div>
                 <div class="post_text">
                     <a href="single-blog.html"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
@@ -104,7 +104,7 @@
         <div class="item">
             <div class="post_s_item">
                 <div class="post_img">
-                    <img src="../../resources/img/post-slider/post-s-4.jpg" alt="">
+                    <img src="/statics/img/post-slider/post-s-4.jpg" alt="">
                 </div>
                 <div class="post_text">
                     <a href="single-blog.html"><h4>Nest Protect: 2nd Gen Smoke + CO Alarm</h4></a>
@@ -129,7 +129,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-1.png" alt="">
+                            <img src="/statics/img/testimonials/testi-1.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -149,7 +149,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-2.png" alt="">
+                            <img src="/statics/img/testimonials/testi-2.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -169,7 +169,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-1.png" alt="">
+                            <img src="/statics/img/testimonials/testi-1.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -189,7 +189,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-2.png" alt="">
+                            <img src="/statics/img/testimonials/testi-2.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -209,7 +209,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-1.png" alt="">
+                            <img src="/statics/img/testimonials/testi-1.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -229,7 +229,7 @@
                 <div class="testi_item">
                     <div class="media">
                         <div class="d-flex">
-                            <img src="../../resources/img/testimonials/testi-2.png" alt="">
+                            <img src="/statics/img/testimonials/testi-2.png" alt="">
                         </div>
                         <div class="media-body">
                             <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -255,19 +255,19 @@
     <div class="container">
         <div class="clients_slider owl-carousel">
             <div class="item">
-                <img src="../../resources/img/clients-logo/c-logo-1.png" alt="">
+                <img src="/statics/img/clients-logo/c-logo-1.png" alt="">
             </div>
             <div class="item">
-                <img src="../../resources/img/clients-logo/c-logo-2.png" alt="">
+                <img src="/statics/img/clients-logo/c-logo-2.png" alt="">
             </div>
             <div class="item">
-                <img src="../../resources/img/clients-logo/c-logo-3.png" alt="">
+                <img src="/statics/img/clients-logo/c-logo-3.png" alt="">
             </div>
             <div class="item">
-                <img src="../../resources/img/clients-logo/c-logo-4.png" alt="">
+                <img src="/statics/img/clients-logo/c-logo-4.png" alt="">
             </div>
             <div class="item">
-                <img src="../../resources/img/clients-logo/c-logo-5.png" alt="">
+                <img src="/statics/img/clients-logo/c-logo-5.png" alt="">
             </div>
         </div>
     </div>
@@ -281,7 +281,6 @@
 
 
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 </body>
 </html>
