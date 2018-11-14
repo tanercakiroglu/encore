@@ -4,6 +4,7 @@ import com.encore.entities.User;
 import com.encore.entities.UserRole;
 import com.encore.irepos.IUserRoleRepo;
 import com.encore.services.LoginService;
+import com.encore.services.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,12 +19,11 @@ import java.util.Collection;
 
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-   @Autowired
-   @Qualifier("login")
+    @Autowired
     private LoginService loginService;
 
-   @Autowired
-   private IUserRoleRepo userRoleRepo;
+    @Autowired
+    private UserRoleService userRoleService;
 
     @Override
     public boolean supports(Class<?> authentication) {
@@ -34,20 +34,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-        User userDb =loginService.getUserByUsernameAndPassword(username,password);
-       if(userDb!=null){
-           UserRole role = userRoleRepo.findByUsername(userDb.getUsername());
-           if(role !=null) {
-               String[] splitRoles = role.getRole().split(",");
-                   Collection<SimpleGrantedAuthority>   grantedAuth = new ArrayList<>();
-                   for(String item :splitRoles){
-                        grantedAuth.add(new SimpleGrantedAuthority(item));
-                   }
-               return new UsernamePasswordAuthenticationToken(userDb, password,grantedAuth);
-           }else{
-               throw new BadCredentialsException("Bad Credentials");
-           }
-       }
-       throw new BadCredentialsException("Bad Credential");
+        User userDb = loginService.getUserByUsernameAndPassword(username, password);
+        if (userDb != null) {
+            UserRole role = userRoleService.findByUsername(userDb.getUsername());
+            if (role != null) {
+                String[] splitRoles = role.getRole().split(",");
+                Collection<SimpleGrantedAuthority> grantedAuth = new ArrayList<>();
+                for (String item : splitRoles) {
+                    grantedAuth.add(new SimpleGrantedAuthority(item));
+                }
+                return new UsernamePasswordAuthenticationToken(userDb, password, grantedAuth);
+            } else {
+                throw new BadCredentialsException("Bad Credentials");
+            }
+        }
+        throw new BadCredentialsException("Bad Credential");
     }
 }
