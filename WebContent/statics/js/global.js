@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $body = $("body");
+
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
            xhr.setRequestHeader("faces-request", "partial/ajax");

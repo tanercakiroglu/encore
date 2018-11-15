@@ -68,6 +68,9 @@
 <script src="/statics/js/jquery.form.js" type="text/javascript"></script>
 <script src="/statics/js/popper.js" type="text/javascript"></script>
 <script src="/statics/js/datatable-bootstrap.js" type="text/javascript"></script>
-
+<script src="/statics/js/datatable-responsive.js" type="text/javascript"></script>
+<script src="/statics/js/datatable-responsive-bootstrap.js" type="text/javascript"></script>
+<script src="/statics/js/datatable-fixedheader.js" type="text/javascript"></script>
+<script>var ctx = "<%=request.getContextPath()%>"</script>
 </body>
 </html>

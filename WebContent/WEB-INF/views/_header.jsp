@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<html lang="en">
+<html lang="tr">
 <head>
     <%@ page isELIgnored="false" %>
     <link rel="stylesheet" type="text/css"      href="/statics/css/style.css">
@@ -50,20 +50,20 @@
                         <security:authorize access="isAuthenticated()">
                             <li class="nav-item"><a class="nav-link" href="#">Welcome  <security:authentication property="principal.username" /></a></li>
                         </security:authorize>
-                        <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/home">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/home">anasayfa</a></li>
                         <security:authorize access="!isAuthenticated()">
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/login">Login</a>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/about">About</a>
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/login">Oturumu aç</a>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/about">Hakkımızda</a>
+                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/contact">iletişim</a></li>
                         </security:authorize>
                         <security:authorize access="isAuthenticated()">
                         <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/admin/employee">Employees</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/admin/employee">çalışanlar</a></li>
                         </security:authorize>
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/project">Projects</a></li>
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/proposal">Proposals</a></li>
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/product">Products</a></li>
-                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/logout">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/project">projeler</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/proposal">teklifler</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/product">ürünler</a></li>
+                            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/logout">çıkış</a></li>
 
                         </security:authorize>
                     </ul>
