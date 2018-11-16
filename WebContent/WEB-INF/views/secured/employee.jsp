@@ -28,14 +28,170 @@
 </section>
 
 
-
 <section id="main">
 
     <div class="container ">
+        <form id="employeeForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Çalışanın Tc No :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="employeeId" name="employeeId"
+                                       placeholder="Çalışanın Adı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Çalışanın Adı :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="employeeName" name="employeeName"
+                                       placeholder="Çalışanın Adı">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Çalışanın Soyadı :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="employeeSurname" name="employeeSurname"
+                                       placeholder="Çalışanın Soyadı">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Çalışanın Tipi :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group input-group">
+                                <select class="form-control" name="employeeType" id="employeeType">
+                                    <option value="-1">Seçiniz</option>
+                                    <option value="">Memur</option>
+                                    <option value="">Mimar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Doğum Tarihi :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group input-group">
+                                <input type="hidden" id="hiddenDate">
+                                <input type="text" class="form-control" id="employeeBirthDay" name="employeeBirthDay"
+                                       autocomplete="off" placeholder="Doğum Tarihi "/>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-default" data-toggle="datepicker"
+                                            data-target-name="employeeBirthDay"><span
+                                            class="fa fa-calendar"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Pasaport No :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="passportId" name="passportId"
+                                       placeholder="Pasaport No">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Telefon :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="employeePhone" name="employeePhone"
+                                       placeholder="Çalışanın Telefonu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Mail :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="employeeMail" name="employeeMail"
+                                       placeholder="Çalışanın Maili">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Adres :</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                            <textarea cols="50" rows="4" class="form-control" id="employeeAddress"
+                                      name="employeeAddress"
+                                      placeholder="Çalışanın Adresi">
+                            </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-right">
+                        <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
         <div class="row">
 
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
+
+                <div class="table-responsive">
+                    <table id="employees" class="table display table-striped table-bordered" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Tc No</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Tipi</th>
+                            <th>Doğum Tarihi</th>
+                            <th>Pasaport No</th>
+                            <th>Telefon</th>
+                            <th>Mail</th>
+                            <th>Adres</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${employees}" var="item">
+                            <tr>
+                                <td>${item.employeeId}</td>
+                                <td>${item.employeeName}</td>
+                                <td>${item.employeeSurname}</td>
+                                <td>${item.employeeType}</td>
+                                <td>${item.employeeBirthDay}</td>
+                                <td>${item.employeePassportId}</td>
+                                <td>${item.employeePhone}</td>
+                                <td>${item.employeeMail}</td>
+                                <td>${item.employeeAddress}</td>
+                                <td><i id="${item.employeeId}" class="fa fa-edit fa-2x"></i></td>
+                                <td><i id="${item.employeeId}" class="fa fa-remove fa-2x"></i></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
 

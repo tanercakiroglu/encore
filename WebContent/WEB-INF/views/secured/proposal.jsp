@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table id="example" class="table display table-striped table-bordered" style="width:100%">
+                    <table id="proposals" class="table display table-striped table-bordered" style="width:100%">
                         <thead>
                         <tr>
                             <th>Numarası</th>
@@ -56,10 +56,10 @@
                         <tbody>
                         <c:forEach items="${proposals}" var="item">
                             <tr>
-                                <td>TKL${item.id}</td>
+                                <td>TKL-${item.id}</td>
                                 <td> ${item.createdDate}</td>
-                                <td>PRJ${item.projectId}</td>
-                                <td>PRD${item.productId}</td>
+                                <td>PRJ-${item.projectId}</td>
+                                <td>PRD-${item.productId}</td>
                                 <td> ${item.salePrice}</td>
                                 <td> ${item.deliveryType}</td>
                                 <td> ${item.paymentType}</td>

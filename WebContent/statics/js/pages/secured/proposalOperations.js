@@ -1,5 +1,7 @@
 $(document).ready(function () {
-
+    var date = $('#hiddenDate').val();
+    if (date !=="")
+        $('#startDate').datepicker("setDate", convertFromTimeStampToDate(date));
 
     $(function () {
         $('#proposalForm').validate({
@@ -60,5 +62,6 @@ $(document).ready(function () {
             }
         });
     })
+
 
 });

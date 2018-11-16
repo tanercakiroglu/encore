@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var table = $('#example').DataTable( {
+    var table = $('#proposals').DataTable( {
         responsive: true
     } );
     new $.fn.dataTable.FixedHeader( table );

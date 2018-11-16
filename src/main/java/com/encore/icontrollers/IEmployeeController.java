@@ -14,7 +14,7 @@ public interface IEmployeeController {
     @Secured("ROLE_ADMIN")
     @RequestMapping(value="/secured/admin/employee",method = RequestMethod.GET)
     @ResponseBody
-    ModelAndView proposalView(HttpServletRequest request, HttpServletResponse response) ;
+    ModelAndView employeeView(HttpServletRequest request, HttpServletResponse response) ;
 }
 
 

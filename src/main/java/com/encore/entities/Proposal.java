@@ -1,10 +1,12 @@
 package com.encore.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity(name="proposals")
+@Entity(name = "proposals")
 public class Proposal {
 
     @Id
@@ -20,6 +22,7 @@ public class Proposal {
     @Column(name = "sale_price")
     private BigDecimal salePrice;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "CREATED_DATE")
     private Date createdDate;
 

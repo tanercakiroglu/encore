@@ -29,24 +29,24 @@ public class ProposalController implements IProposalController {
 
     @Override
     public ModelAndView proposalView(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView model = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("secured/proposal");
         List<Proposal> proposals = proposalService.getAllProposal();
         request.getSession().setAttribute("proposals",proposals);
-        model.addObject("proposals",proposals);
-        return new ModelAndView("secured/proposal","model",model);
+        modelAndView.addObject("proposals",proposals);
+        return modelAndView;
     }
 
     @Override
     public ModelAndView proposalAddUpdateView(@RequestParam(value = "proposalId", required = false) String proposalId,HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView model = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("secured/proposalOperations");
         List<Project> projects =projectService.getAllProjects();
-        model.addObject("projects",getSelectItemsProjects(projects));
+        modelAndView.addObject("projects",getSelectItemsProjects(projects));
         if(proposalId!=null) {
             List<Proposal> proposals = (List<Proposal>) request.getSession().getAttribute("proposals");
             Optional<Proposal> selectedProposal=proposals.stream().filter(x->x.getId()==Long.valueOf(proposalId)).findFirst();
-            model.addObject("selectedProposal",selectedProposal.isPresent()? selectedProposal.get():null);
+            modelAndView.addObject("selectedProposal",selectedProposal.isPresent()? selectedProposal.get():null);
         }
-        return new ModelAndView("secured/proposalAddOrUpdate","model",model);
+        return modelAndView;
     }
 
     Map<Long,String> getSelectItemsProjects(  List<Project> list){
