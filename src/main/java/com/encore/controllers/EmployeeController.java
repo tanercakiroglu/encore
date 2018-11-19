@@ -3,7 +3,9 @@ package com.encore.controllers;
 import com.encore.entities.Employee;
 import com.encore.icontrollers.IEmployeeController;
 import com.encore.iservices.IEmployeeService;
+import com.encore.requests.AddEmployeeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,5 +25,10 @@ public class EmployeeController implements IEmployeeController {
         List<Employee> employeeList = employeeService.getAllEmployees();
         modelAndView.addObject("employees",employeeList);
         return modelAndView;
+    }
+
+    @Override
+    public ModelAndView employeeView(@RequestBody AddEmployeeRequest req, HttpServletRequest request, HttpServletResponse response) {
+        return null;
     }
 }

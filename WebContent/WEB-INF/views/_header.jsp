@@ -7,6 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="tr">
 <head>
     <%@ page isELIgnored="false" %>
@@ -21,7 +25,6 @@
     <link rel="stylesheet" href="/statics/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/statics/vendors/owl-carousel/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/statics/vendors/lightbox/simpleLightbox.css" type="text/css">
-    <link rel="stylesheet" href="/statics/vendors/nice-select/css/nice-select.css"type="text/css">
     <link rel="stylesheet" href="/statics/vendors/animate-css/animate.css" type="text/css">
     <link rel="stylesheet" href="/statics/css/datepicker.css">
     <link rel="stylesheet" href="/statics/css/jquery-ui.min.css">
@@ -30,6 +33,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="/statics/img/favicon.png" type="image/png">
+    <script …>
+        var ctx = '<%= request.getContextPath()%>';
+    </script>
 </head>
 <body  data-spy="scroll" data-target="#mainNav" data-offset="70">
 <!--================Header Menu Area =================-->
@@ -37,6 +43,7 @@
     <div class="main_menu" id="mainNav">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container box_1620">
+
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <a class="navbar-brand logo_h" href="index.html"><img src="/statics/img/logo.PNG" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

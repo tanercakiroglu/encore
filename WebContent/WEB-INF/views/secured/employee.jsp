@@ -26,7 +26,7 @@
         </div>
     </div>
 </section>
-
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <section id="main">
 
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="employeeId" name="employeeId"
+                                <input type="number"  class="form-control" id="employeeId" name="employeeId"
                                        placeholder="Çalışanın Adı">
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Çalışanın Soyadı :</label>
+                            <label>Çalışanın Soyadı:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
@@ -67,26 +67,27 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Çalışanın Tipi :</label>
+                            <label>Çalışanın Tipi:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group input-group">
-                                <select class="form-control" name="employeeType" id="employeeType">
-                                    <option value="-1">Seçiniz</option>
-                                    <option value="">Memur</option>
-                                    <option value="">Mimar</option>
+                                <select  class="form-control text-center" name="employeeType" id="employeeType">
+                                    <option >Seçiniz</option>
+                                    <option value="1">Memur</option>
+                                    <option value="2">Mimar</option>
                                 </select>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Doğum Tarihi :</label>
+                            <label>Doğum Tarihi:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group input-group">
-                                <input type="hidden" id="hiddenDate">
-                                <input type="text" class="form-control" id="employeeBirthDay" name="employeeBirthDay"
+                                <input type="hidden" id="hiddenDate" name="hiddenDate">
+                                <input type="text" maxlength="10" class="form-control" id="employeeBirthDay" name="employeeBirthDay"
                                        autocomplete="off" placeholder="Doğum Tarihi "/>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-default" data-toggle="datepicker"
@@ -101,27 +102,27 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Pasaport No :</label>
+                            <label>Pasaport No:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="passportId" name="passportId"
+                                <input type="number" class="form-control" id="employeePassportId" name="employeePassportId"
                                        placeholder="Pasaport No">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label>Telefon :</label>
+                            <label>Telefon:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="employeePhone" name="employeePhone"
-                                       placeholder="Çalışanın Telefonu">
+                                <input type="number"  class="form-control" id="employeePhone" name="employeePhone"
+                                       placeholder="Çalışanın Telefonu örn 534xxxyyzz">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Mail :</label>
+                            <label>Mail:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
@@ -132,7 +133,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label>Adres :</label>
+                            <label>Adres:</label>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">

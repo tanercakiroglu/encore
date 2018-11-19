@@ -51,7 +51,6 @@
 <script src="/statics/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/statics/js/stellar.js" type="text/javascript"></script>
 <script src="/statics/vendors/lightbox/simpleLightbox.min.js" type="text/javascript"></script>
-<script src="/statics/vendors/nice-select/js/jquery.nice-select.min.js" type="text/javascript"></script>
 <script src="/statics/vendors/isotope/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 <script src="/statics/vendors/isotope/isotope-min.js" type="text/javascript"></script>
 <script src="/statics/vendors/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>

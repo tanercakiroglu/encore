@@ -1,7 +1,8 @@
 $(document).ready(function () {
 
-    $body = $("body");
 
+    $body = $("body");
+    $.validator.setDefaults({ ignore: [] });
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
            xhr.setRequestHeader("faces-request", "partial/ajax");
@@ -24,8 +25,8 @@ $(document).ready(function () {
         });
     });
 
-    $.validator.addMethod("valueNotEquals", function(value, element, arg){
-        return arg === value;
+    $.validator.addMethod("valueEquals", function(value, element, arg){
+        return arg !== value;
     }, "bu alan zorunludur");
 
 
