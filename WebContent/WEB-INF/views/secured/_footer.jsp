@@ -6,45 +6,38 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="tr">
 <head>
+    <meta charset="utf-8">
     <title>Title</title>
 </head>
 <body>
 
-<!-- Modals success -->
-
-<div id="success" class="modal modal-message fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </button>
-                <h2>Thank you</h2>
-                <p>Your message is successfully sent...</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modals error -->
-
-<div id="error" class="modal modal-message fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fa fa-close"></i>
-                </button>
-                <h2>Sorry !</h2>
-                <p> Something went wrong </p>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="loader"><!-- Place at bottom of page --></div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title">İşlem Sunucu</h4>
+                    <button type="button" class="close " data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
 <script src="/statics/js/jquery-3.3.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="/statics/js/data-table.js"></script>
 <script src="/statics/js/popper.js" type="text/javascript"></script>
@@ -70,6 +63,5 @@
 <script src="/statics/js/datatable-responsive.js" type="text/javascript"></script>
 <script src="/statics/js/datatable-responsive-bootstrap.js" type="text/javascript"></script>
 <script src="/statics/js/datatable-fixedheader.js" type="text/javascript"></script>
-<script>var ctx = "<%=request.getContextPath()%>"</script>
-</body>
+
 </html>

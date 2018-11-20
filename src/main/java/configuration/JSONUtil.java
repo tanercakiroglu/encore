@@ -38,9 +38,9 @@ public class JSONUtil {
     }
 
 
-    public static String getJSONResultWithSuccess(Object data) {
+    public static String getJSONResultWithSuccess(Object data,String status) {
         Map<String, Object> map = new HashMap<>();
-        map.put("status", "success");
+        map.put("status", status);
         map.put("message", SUCCESS_PROCESS);
         map.put("data", data);
         String response = null;

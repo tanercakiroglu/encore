@@ -1,3 +1,4 @@
+var webContextPath = "/app";
 $(document).ready(function () {
 
 
@@ -46,6 +47,16 @@ $(document).ready(function () {
         ajaxStop:  function() { $body.removeClass("loading"); }
     });
 
+    $(document).ajaxSuccess(function( event, request, settings ) {
+        if(request.responseJSON!= null && request.responseJSON.status=="expired"){
+            setTimeout(function(){
+                openModal("İşlem Süreniz Dolmuştur.");
+                window.location.href=webContextPath+request.responseJSON.message;
+            }, 1000);
+
+        }
+    });
+
 
 
 });
@@ -55,4 +66,10 @@ function  convertFromTimeStampToDate(date){
         var dateObj = date.split('-');
         return new Date(dateObj[0], dateObj[1], dateObj[2]);
     }
+}
+
+function  openModal(content){
+    $('.modal-body').empty();
+    $('.modal-body').append(content);
+    $('#myModal').modal('show');
 }

@@ -13,6 +13,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Title</title>
 </head>
 <body>
@@ -41,7 +42,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <input type="number"  class="form-control" id="employeeId" name="employeeId"
-                                       placeholder="Çalışanın Adı">
+                                       placeholder="Çalışanın Tc Kimlik Numarası">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -147,16 +148,13 @@
                     <div class="form-group text-right">
                         <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Kaydet
                         </button>
+                        <button id="clear_btn" type="button" class="btn submit_btn">Temizle</button>
                     </div>
                 </div>
             </div>
         </form>
-
         <div class="row">
-
             <div class="col-lg-12">
-
-
                 <div class="table-responsive">
                     <table id="employees" class="table display table-striped table-bordered" style="width:100%">
                         <thead>
@@ -193,9 +191,7 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>

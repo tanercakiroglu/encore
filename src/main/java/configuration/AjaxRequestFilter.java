@@ -39,7 +39,7 @@ public class AjaxRequestFilter  extends GenericFilterBean {
         String contextPath = request.getContextPath();
         String redirectUrl = contextPath + invalidSessionUrl;
 
-        String ajaxRedirectJson =JSONUtil.getJSONResultWithSuccess(redirectUrl);
+        String ajaxRedirectJson =JSONUtil.getJSONResultWithSuccess(redirectUrl,"expired");
 
         response.setContentType("application/json");
         response.getWriter().write(ajaxRedirectJson);

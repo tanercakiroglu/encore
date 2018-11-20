@@ -1,11 +1,10 @@
 package com.encore.icontrollers;
 
 import com.encore.requests.AddEmployeeRequest;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,9 +18,14 @@ public interface IEmployeeController {
     ModelAndView employeeView(HttpServletRequest request, HttpServletResponse response) ;
 
     @Secured("ROLE_ADMIN")
-    @RequestMapping(value="/secured/admin/employee/add",method = RequestMethod.POST)
+    @RequestMapping(value="/secured/admin/employee/add",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE} )
     @ResponseBody
-    ModelAndView employeeView(@RequestBody AddEmployeeRequest req, HttpServletRequest request, HttpServletResponse response) ;
+    Object addEmployee(@RequestBody AddEmployeeRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) ;
+
+    @Secured("ROLE_ADMIN")
+    @RequestMapping(value="/secured/admin/employee/remove",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE} )
+    @ResponseBody
+    Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) ;
 }
 
 

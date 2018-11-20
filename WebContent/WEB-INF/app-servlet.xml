@@ -25,18 +25,24 @@
     <context:component-scan base-package="com.encore.services" />
     <jpa:repositories base-package="com.encore.irepos"/>
     <context:component-scan base-package="configuration"/>
+    <context:component-scan base-package="com.encore.validators"/>
     <aop:aspectj-autoproxy />
     <mvc:annotation-driven/>
     <aop:config proxy-target-class="true"/>
+
+    <bean id="mapper"  class="org.dozer.DozerBeanMapper"></bean>
 
     <import resource="classpath:security-context.xml"></import>
 
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager">
         <mvc:message-converters register-defaults="false">
             <bean id="jacksonMessageConverter"
-                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="supportedMediaTypes" value = "application/json;charset=UTF-8" />
+            </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
 
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="favorPathExtension" value="false"/>
@@ -44,10 +50,10 @@
         <property name="ignoreAcceptHeader" value="false"/>
         <property name="mediaTypes">
             <value>
-                atom=application/atom+xml
-                html=text/html
-                json=application/json
-                form=application/x-www-form-urlencoded
+                atom=application/atom+xml;charset=UTF-8
+                html=text/html;charset=UTF-8
+                json=application/json;charset=UTF-8
+                form=application/x-www-form-urlencoded;charset=UTF-8
                 *=*/*
             </value>
         </property>
