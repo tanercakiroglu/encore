@@ -21,7 +21,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title">İşlem Sunucu</h4>
+                    <h4 class="modal-title">İşlem Sonucu</h4>
                     <button type="button" class="close " data-dismiss="modal">&times;</button>
                 </div>
 
@@ -29,12 +29,35 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="submit_btn btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
         </div>
     </div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header text-center">
+                <h4 class="modal-title" id="myModalLabel">Silme Onayı</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <p>Kaydı silmek üzeresiniz.</p>
+                <p>Emin misiniz?</p>
+                <p class="debug-url"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default submit_btn" data-dismiss="modal" style="color: white">İptal</button>
+                <a class="btn btn-danger submit_btn confirmDelete" id="confirmDelete" style="color: white">Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
@@ -54,7 +77,6 @@
 <script src="/statics/vendors/popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
 <script src="/statics/js/theme.js" type="text/javascript"></script>
 <script src="/statics/js/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/statics/js/global.js" type="text/javascript"></script>
 <script src="/statics/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="/statics/js/bootstrap-datepicker.tr.js" type="text/javascript"></script>
 <script src="/statics/js/jquery.form.js" type="text/javascript"></script>
@@ -63,5 +85,7 @@
 <script src="/statics/js/datatable-responsive.js" type="text/javascript"></script>
 <script src="/statics/js/datatable-responsive-bootstrap.js" type="text/javascript"></script>
 <script src="/statics/js/datatable-fixedheader.js" type="text/javascript"></script>
+<script src="/statics/js/date-format.js" type="text/javascript"></script>
+<script src="/statics/js/global.js" type="text/javascript"></script>
 
 </html>

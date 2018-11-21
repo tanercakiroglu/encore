@@ -45,7 +45,7 @@
             <div class="container box_1620">
 
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="index.html"><img src="/statics/img/logo.PNG" alt=""></a>
+                <a class="navbar-brand logo_h" href="${pageContext.request.contextPath}/app/home"/><div style="color: white;font-weight: bold;font-size:larger;">ENCORE</div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -55,7 +55,7 @@
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <security:authorize access="isAuthenticated()">
-                            <li class="nav-item"><a class="nav-link" href="#">Welcome  <security:authentication property="principal.username" /></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><security:authentication property="principal.username" /></a></li>
                         </security:authorize>
                         <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/home">anasayfa</a></li>
                         <security:authorize access="!isAuthenticated()">

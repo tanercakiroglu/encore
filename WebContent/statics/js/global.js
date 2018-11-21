@@ -52,7 +52,7 @@ $(document).ready(function () {
             setTimeout(function(){
                 openModal("İşlem Süreniz Dolmuştur.");
                 window.location.href=webContextPath+request.responseJSON.message;
-            }, 1000);
+            }, 3000);
 
         }
     });
@@ -62,9 +62,15 @@ $(document).ready(function () {
 });
 
 function  convertFromTimeStampToDate(date){
+    var exprDate = new RegExp(/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/);
+    dateStr = new String(date);
     if (date != null && date != undefined) {
-        var dateObj = date.split('-');
-        return new Date(dateObj[0], dateObj[1], dateObj[2]);
+      if(dateStr.match(exprDate)){
+           var dateObj = dateStr.split('-');
+           return new Date(dateObj[0],parseInt(dateObj[1])-1, dateObj[2]);
+       }else {
+          return (new Date(date));
+      }
     }
 }
 
@@ -72,4 +78,15 @@ function  openModal(content){
     $('.modal-body').empty();
     $('.modal-body').append(content);
     $('#myModal').modal('show');
+}
+
+function  openDeleteConfirmModal(id){
+    $('.modal-body').empty();
+    $('.modal-body').append("Kaydı silmek istediğnizden emin misiniz?");
+    $("#confirmDelete").attr("data-id",id);
+    $('#confirm-delete').modal('show');
+}
+
+function  closeDeleteConfirmModal(){
+    $('#confirm-delete').modal('hide');
 }

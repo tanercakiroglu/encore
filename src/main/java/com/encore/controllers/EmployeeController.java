@@ -5,15 +5,19 @@ import com.encore.icontrollers.IEmployeeController;
 import com.encore.iservices.IEmployeeService;
 import com.encore.requests.AddEmployeeRequest;
 import com.encore.validators.AddEmployeeRequestValidator;
+import exceptions.BusinessException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import util.JSONUtil;
+import util.SelectType;
+import util.Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +38,7 @@ public class EmployeeController extends BaseController implements IEmployeeContr
     public ModelAndView employeeView(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView("secured/employee");
         List<Employee> employeeList = employeeService.getAllEmployees();
+        modelAndView.addObject("employeeSelectList", Utils.getSelectOptionByType(request, SelectType.EMPLOYEE_TYPE.getValue()));
         modelAndView.addObject("employees", employeeList);
         return modelAndView;
     }
@@ -49,7 +54,8 @@ public class EmployeeController extends BaseController implements IEmployeeContr
     }
 
     @Override
-    public Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) {
+    public Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) throws BusinessException {
+
         if (StringUtils.isEmpty(id))
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONUtil.getJSONResultWithValidationError("Silinecek satırın T.C kimlik numarası boş olamaz"));
         employeeService.removeEmployee(id);

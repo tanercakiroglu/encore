@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var date = $('#hiddenDate').val();
     if (date !=="")
-        $('#startDate').datepicker("setDate", convertFromTimeStampToDate(date));
+        $('#startDate').datepicker("setDate", jQuery.format.date(new Date(date),'dd-MM-yyyy'));
 
     $(function () {
         $('#proposalForm').validate({

@@ -1,43 +1,43 @@
 package com.encore.controllers;
 
+import com.encore.entities.SelectOptions;
+import com.encore.iservices.ISelectOptionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.encore.icontrollers.IHomeController;
+import util.SelectType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class HomeController implements IHomeController {
 
+    @Autowired
+    private ISelectOptionService selectOptionService;
+
     @Override
     public ModelAndView homeView() {
         Map<String,Object> model = new HashMap<>();
-
-
-        model.put("tovList","dsmfn");
-        model.put("vechList","ms fmas");
         return new ModelAndView("home",model);
     }
 
     @Override
     public ModelAndView securedHome(HttpServletRequest request, HttpServletResponse response) {
-
-        Map<String,String> map = new HashMap<>();
-
-        map.put("token", "asd");
-        return new ModelAndView("secured/home",map);
+        List<SelectOptions> selectList = selectOptionService.getAllSelectOptions();
+        request.getSession().setAttribute("selectList",selectList);
+        return new ModelAndView("secured/home");
     }
 
     @Override
     public ModelAndView admin() {
-        Map<String,String> map = new HashMap<>();
 
-        map.put("token", "asd");
-        return new ModelAndView("secured/admin",map);
+        return new ModelAndView("secured/admin");
     }
 
 }

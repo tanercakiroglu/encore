@@ -1,9 +1,7 @@
 package configuration;
 
 import exceptions.BusinessException;
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,27 +18,25 @@ public class GlobalExceptionHandler {
     private static final String AJAX_HEADER = "faces-request";
     private static final String AJAX_HEADER_VALUE = "partial/ajax";
 
-    @ExceptionHandler(value = BusinessException.class)
+    @ExceptionHandler(Throwable.class)
+    @ResponseBody
+    public Object defaultErrorHandler(Exception e, HttpServletRequest req, HttpServletResponse response) {
+        return handleException(req, response, e.getCause() != null ? e.getCause().toString() : "Teknik bir hata yüzünden işleminiz kesilmiştir.");
+    }
+
+    @ExceptionHandler(BusinessException.class)
     @ResponseBody
     public Object businessException(Exception e, HttpServletRequest req, HttpServletResponse response) {
         String exceptionMsg = e.getMessage();
         return handleBusinessException(req, response, exceptionMsg);
     }
 
-    @ExceptionHandler(value = {BadCredentialsException.class})
+    @ExceptionHandler(BadCredentialsException.class)
     @ResponseBody
     public Object badCredentialException(Exception e, HttpServletRequest req, HttpServletResponse response) {
         String exceptionMsg = e.getMessage();
         return handleBadCredentialException(req, response, exceptionMsg);
     }
-
-
-    @ExceptionHandler(value = Throwable.class)
-    @ResponseBody
-    public Object defaultErrorHandler(Exception e, HttpServletRequest req, HttpServletResponse response) {
-        return handleException(req, response, e.getCause() != null ? e.getCause().toString() : "Teknik bir hata yüzünden işleminiz kesilmiştir.");
-    }
-
 
     private Object handleException(HttpServletRequest req, HttpServletResponse response, String exceptionMsg) {
 

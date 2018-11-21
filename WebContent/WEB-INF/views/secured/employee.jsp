@@ -27,7 +27,7 @@
         </div>
     </div>
 </section>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <section id="main">
 
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="number"  class="form-control" id="employeeId" name="employeeId"
+                                <input type="number" class="form-control" id="employeeId" name="employeeId"
                                        placeholder="Çalışanın Tc Kimlik Numarası">
                             </div>
                         </div>
@@ -72,12 +72,12 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group input-group">
-                                <select  class="form-control text-center" name="employeeType" id="employeeType">
-                                    <option >Seçiniz</option>
-                                    <option value="1">Memur</option>
-                                    <option value="2">Mimar</option>
+                                <select class="form-control" id="employeeType">
+                                    <option value="Seçiniz" selected>Seçiniz</option>
+                                    <c:forEach items="${employeeSelectList}" var="item" varStatus="status">
+                                        <option value="${item.key}">${item.value}</option>
+                                    </c:forEach>
                                 </select>
-
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,8 @@
                         <div class="col-md-8">
                             <div class="form-group input-group">
                                 <input type="hidden" id="hiddenDate" name="hiddenDate">
-                                <input type="text" maxlength="10" class="form-control" id="employeeBirthDay" name="employeeBirthDay"
+                                <input type="text" maxlength="10" class="form-control" id="employeeBirthDay"
+                                       name="employeeBirthDay"
                                        autocomplete="off" placeholder="Doğum Tarihi "/>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-default" data-toggle="datepicker"
@@ -107,7 +108,8 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="number" class="form-control" id="employeePassportId" name="employeePassportId"
+                                <input type="number" class="form-control" id="employeePassportId"
+                                       name="employeePassportId"
                                        placeholder="Pasaport No">
                             </div>
                         </div>
@@ -116,7 +118,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input type="number"  class="form-control" id="employeePhone" name="employeePhone"
+                                <input type="number" class="form-control" id="employeePhone" name="employeePhone"
                                        placeholder="Çalışanın Telefonu örn 534xxxyyzz">
                             </div>
                         </div>
@@ -178,7 +180,7 @@
                                 <td>${item.employeeId}</td>
                                 <td>${item.employeeName}</td>
                                 <td>${item.employeeSurname}</td>
-                                <td>${item.employeeType}</td>
+                                <td>${employeeSelectList[item.employeeType]}</td>
                                 <td>${item.employeeBirthDay}</td>
                                 <td>${item.employeePassportId}</td>
                                 <td>${item.employeePhone}</td>

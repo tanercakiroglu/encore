@@ -102,22 +102,26 @@ $(document).ready(function () {
                     dataType: 'json',
                     url: form.baseURI + "/add",
                     contentType: "application/json; charset=utf-8",
-                    success: function (resp) {
-                        response = JSON.parse(resp);
-                        var data = response.data;
-                        bindTable(data);
-                        clearForm();
-                        openModal(response.message);
-                    },
-                    error: function (resp) {
-                        var response;
-                        if (resp.status === 400) {
-                            response = JSON.parse(resp.responseJSON);
-                        } else {
-                            response = JSON.parse(resp.responseText);
+                }).done(function (resp, status, jqXHR) {
+                    if (resp != undefined && resp.status == undefined) {
+                        var response = JSON.parse(resp);
+                        if (response.status = "success") {
+                            bindTable(response.data);
+                            clearForm();
+                            openModal(response.message);
                         }
-                        openModal(response.message);
                     }
+                    if (resp.status == "business_error") {
+                        openModal(resp.message);
+                    }
+                }).fail(function (resp, status, err) {
+                    var response;
+                    if (resp.status === 400) {
+                        response = JSON.parse(resp.responseJSON);
+                    } else {
+                        response = JSON.parse(resp.responseText);
+                    }
+                    openModal(response.message);
                 })
             }
         });
@@ -125,42 +129,57 @@ $(document).ready(function () {
 
     $(document).on('click', '.fa-edit', function () {
         var data = table.row($(this).parents('tr')).data();
-        $("#employeeId").val(data[0]);
-        $("#employeeName").val(data[1]);
-        $("#employeeSurname").val(data[2]);
-        $("#employeeType").val(data[3]);
-        $('#employeeBirthDay').datepicker("setDate", convertFromTimeStampToDate(data[4]));
-        $("#employeePassportId").val(data[5]);
-        $("#employeePhone").val(data[6]);
-        $("#employeeMail").val(data[7]);
-        $("#employeeAddress").val(data[8]);
+        var keys = Object.keys(data);
+
+        $("#employeeId").val(data[keys[0]]);
+        $("#employeeName").val(data[keys[1]]);
+        $("#employeeSurname").val(data[keys[2]]);
+        if ($.isNumeric(data[keys[3]]))
+            $("#employeeType").val(data[keys[3]]);
+        else
+            $("#employeeType option:contains(" + data[keys[3]] + ")").attr('selected', 'selected');
+        $('#employeeBirthDay').datepicker("setDate", convertFromTimeStampToDate(data[keys[4]]));
+        $("#employeePassportId").val(data[keys[5]]);
+        $("#employeePhone").val(data[keys[6]]);
+        $("#employeeMail").val(data[keys[7]]);
+        $("#employeeAddress").val(data[keys[8]]);
     })
 
-    $(document).on('click', '.fa-remove', function () {
-        var id = this.id;
-
+    $(document).on('click', '.confirmDelete', function () {
+        closeDeleteConfirmModal();
+        var id=$("#confirmDelete").attr("data-id");
         $.ajax({
             type: "POST",
             data: id,
             dataType: 'json',
             url: webContextPath + "/secured/admin/employee/remove",
-            contentType: "application/json; charset=utf-8",
-            success: function (resp) {
-                response = JSON.parse(resp);
-                var data = response.data;
-                bindTable(data);
-                openModal(response.message);
-            },
-            error: function (resp) {
-                var response;
-                if (resp.status === 400) {
-                    response = JSON.parse(resp.responseJSON);
-                } else {
-                    response = JSON.parse(resp.responseText);
+            contentType: "application/json; charset=utf-8"
+        }).done(function (resp, status, jqXHR) {
+            if (resp != undefined && resp.status == undefined) {
+                var response = JSON.parse(resp);
+                if (response.status = "success") {
+                    response = JSON.parse(resp);
+                    bindTable(response.data);
+                    openModal(response.message);
+                    clearForm();
                 }
-                openModal(response.message);
+            } else if (resp.status == "business_error") {
+                openModal(resp.message);
             }
+
+        }).fail(function (resp, status, err) {
+            var response;
+            if (resp.status === 400) {
+                response = JSON.parse(resp.responseJSON);
+            } else {
+                response = JSON.parse(resp.responseText);
+            }
+            openModal(response.message);
         })
+    })
+
+    $(document).on('click', '.fa-remove', function () {
+        openDeleteConfirmModal(this.id)
     });
 
     function bindTable(data) {
@@ -171,13 +190,22 @@ $(document).ready(function () {
             paging: true,
             bInfo: false,
             language: 'tr',
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
             data: data,
             aoColumns: [
                 {'mData': "employeeId"},
                 {'mData': "employeeName"},
                 {'mData': "employeeSurname"},
-                {'mData': "employeeType"},
-                {'mData': "employeeBirthDay"},
+                {
+                    'mRender': function (data, type, row) {
+                        return $("#employeeType option[value=" + (row.employeeType) + "]").text();
+                    }
+                },
+                {
+                    'mRender': function (data, type, row) {
+                        return jQuery.format.date(new Date(row.employeeBirthDay), 'dd-MM-yyyy');
+                    }
+                },
                 {'mData': "employeePassportId"},
                 {'mData': "employeePhone"},
                 {'mData': "employeeMail"},
@@ -206,6 +234,6 @@ $(document).ready(function () {
             .val('')
             .prop('checked', false);
 
-        $("select").val($("#employeeType option:first").val());
+        $("#employeeType").val($("#employeeType option:first").val());
     }
 })

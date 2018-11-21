@@ -1,6 +1,7 @@
 package com.encore.icontrollers;
 
 import com.encore.requests.AddEmployeeRequest;
+import exceptions.BusinessException;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.Errors;
@@ -25,7 +26,7 @@ public interface IEmployeeController {
     @Secured("ROLE_ADMIN")
     @RequestMapping(value="/secured/admin/employee/remove",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE} )
     @ResponseBody
-    Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) ;
+    Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) throws BusinessException;
 }
 
 
