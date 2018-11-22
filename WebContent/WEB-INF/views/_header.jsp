@@ -55,7 +55,7 @@
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
                         <security:authorize access="isAuthenticated()">
-                            <li class="nav-item"><a class="nav-link" href="#"><security:authentication property="principal.username" /></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><security:authentication property="principal.employeeName" /></a></li>
                         </security:authorize>
                         <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/app/secured/user/home">anasayfa</a></li>
                         <security:authorize access="!isAuthenticated()">

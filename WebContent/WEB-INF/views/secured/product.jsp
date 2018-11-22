@@ -28,17 +28,173 @@
 </section>
 
 
-
 <section id="main">
 
     <div class="container ">
-        <div class="row">
+        <form id="productForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Ürün Numarası:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" disabled="disabled" class="form-control" id="id" name="id"
+                                       placeholder="Ürün Numarası">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Adı:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="productName" name="productName"
+                                       placeholder="Ürün Adı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Tipi:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group input-group">
+                                <select class="form-control" id="employeeType">
+                                    <option value="Seçiniz" selected>Seçiniz</option>
+                                    <c:forEach items="${productTypeSelectList}" var="item" varStatus="status">
+                                        <option value="${item.key}">${item.value}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Sorumlusu:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="productOwner" name="productOwner"
+                                       placeholder="Ürün Sorumlusu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Ürün Boyu:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="productHeight" name="productHeight"
+                                       placeholder="Ürün Boyu(cm örn 180)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Eni:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="productWeight" name="productWeight"
+                                       placeholder="Ürün Eni(cm örn 180)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Yüksekliği:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="productDepth" name="productDepth"
+                                       placeholder="Ürün Yüksekliği(cm örn 180)">
+                            </div>
+                        </div>
+                        <form id="file-form">
+                            <div class="col-md-8">
+                                <input type="file" id="file-select" name="files[]" multiple/>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn submit_btn text-right" id="upload-button">Upload</button>
+                            </div>
+                        </form>
 
-            <div class="col-lg-8">
+                    </div>
+                </div>
 
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Ürün Alış Fiyatı:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="productBuyPrice" name="productBuyPrice"
+                                       placeholder="Ürün Alış Fiyatı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ürün Satış Fiyatı:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="number" class="form-control" id="productSellPrice" name="productSellPrice"
+                                       placeholder="Ürün Satış Fiyatı">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Tedarikçi Firma:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="productSupplier" name="productSupplier"
+                                       placeholder="Tedarikçi Firma">
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
-
+        </form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table id="products" class="table display table-striped table-bordered" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>Numarası</th>
+                            <th>Adı</th>
+                            <th>Tedarakçi Firma</th>
+                            <th>Tipi</th>
+                            <th>Boy</th>
+                            <th>En</th>
+                            <th>Yükseklik</th>
+                            <th>Sorumlusu</th>
+                            <th>Alış Fiyatı</th>
+                            <th>Satış Fiyatı</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${products}" var="item">
+                            <tr>
+                                <td>${item.id}</td>
+                                <td>${item.productName}</td>
+                                <td>${item.productSupplier}</td>
+                                <td>${productTypeSelectList[item.productType]}</td>
+                                <td>${item.productHeight}</td>
+                                <td>${item.productWeight}</td>
+                                <td>${item.productDepth}</td>
+                                <td>${item.productOwner}</td>
+                                <td>${item.productBuyPrice}</td>
+                                <td>${item.productBuyPrice}</td>
+                                <td><i id="${item.id}" class="fa fa-edit fa-2x"></i></td>
+                                <td><i id="${item.id}" class="fa fa-remove fa-2x"></i></td>
+                                <td><i id="${item.fileId}" class="fa fa-file fa-2x"></i></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

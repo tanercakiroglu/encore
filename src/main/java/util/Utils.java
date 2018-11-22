@@ -1,6 +1,6 @@
 package util;
 
-import com.encore.entities.SelectOptions;
+import com.encore.entities.SelectOption;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Utils {
 
 
     public static Map<Integer, String> getSelectOptionByType(HttpServletRequest request, int selectType) {
-        List<SelectOptions> selectList = (List<SelectOptions>) request.getSession().getAttribute("selectList");
+        List<SelectOption> selectList = (List<SelectOption>) request.getSession().getAttribute("selectList");
         return selectList.stream().filter(x -> x.getSelectType() == selectType).collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
     }
 }

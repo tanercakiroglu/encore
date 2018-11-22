@@ -3,7 +3,7 @@ package com.encore.entities;
 import javax.persistence.*;
 
 @Entity(name="select_options")
-public class SelectOptions {
+public class SelectOption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class SelectOptions {
     @Column(name = "value")
     private String value;
 
-    public SelectOptions() {
+    public SelectOption() {
     }
 
     public Long getId() {

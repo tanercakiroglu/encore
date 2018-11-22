@@ -1,8 +1,10 @@
 package configuration;
 
+import com.encore.entities.Employee;
 import com.encore.entities.User;
 import com.encore.entities.UserRole;
 import com.encore.irepos.IUserRoleRepo;
+import com.encore.services.EmployeeService;
 import com.encore.services.LoginService;
 import com.encore.services.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserRoleService userRoleService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
@@ -43,7 +48,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 for (String item : splitRoles) {
                     grantedAuth.add(new SimpleGrantedAuthority(item));
                 }
-                return new UsernamePasswordAuthenticationToken(userDb, password, grantedAuth);
+                Employee employee = employeeService.getEmployeeByEmail(username);
+                if (employee != null)
+                    return new UsernamePasswordAuthenticationToken(employee, password, grantedAuth);
+                else {
+                    throw new BadCredentialsException("Bad Credentials");
+                }
             } else {
                 throw new BadCredentialsException("Bad Credentials");
             }

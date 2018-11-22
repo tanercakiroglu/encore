@@ -1,6 +1,6 @@
 package com.encore.services;
 
-import com.encore.entities.SelectOptions;
+import com.encore.entities.SelectOption;
 import com.encore.irepos.ISelectRepo;
 import com.encore.iservices.ISelectOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class SelectOptionsService implements ISelectOptionService {
     private ISelectRepo selectRepo;
 
     @Override
-    public List<SelectOptions> getAllSelectOptions() {
+    public List<SelectOption> getAllSelectOptions() {
         return selectRepo.findAll();
     }
 }

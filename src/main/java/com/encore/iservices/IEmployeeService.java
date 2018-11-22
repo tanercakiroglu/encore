@@ -10,4 +10,5 @@ public interface IEmployeeService {
     List<Employee> getAllEmployees();
     Employee addEmployee(AddEmployeeRequest request);
     boolean removeEmployee(String id);
+    Employee getEmployeeByEmail(String email);
 }

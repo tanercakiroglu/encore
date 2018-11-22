@@ -37,4 +37,9 @@ public class EmployeeService implements IEmployeeService {
         employeeRepo.deleteById(Long.valueOf(id));
         return true;
     }
+
+    @Override
+    public Employee getEmployeeByEmail(String email) {
+        return employeeRepo.findByEmployeeMail(email);
+    }
 }

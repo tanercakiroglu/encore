@@ -1,6 +1,9 @@
 package com.encore.controllers;
 
+import com.encore.entities.Employee;
 import configuration.JSONUtil;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -22,5 +25,14 @@ public abstract class BaseController {
             }
         }
         return JSONUtil.getJSONResultWithValidationError((errors.values()));
+    }
+
+    public Employee getUserInformation(){
+     Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal() ;
+		 if(principal instanceof Employee) {
+             Employee user = (Employee) principal;
+             return user;
+         }
+         return null;
     }
 }
