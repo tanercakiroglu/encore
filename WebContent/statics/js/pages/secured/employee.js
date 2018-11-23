@@ -1,6 +1,13 @@
 $(document).ready(function () {
     var table = $('#employees').DataTable({
-        responsive: true
+        responsive: true,
+        language: {
+            lengthMenu: "Sayfada _MENU_ Göster",
+            zeroRecords: "Kayıt Bulunmamaktadır.",
+            info: "Sayfa _PAGE_ Gösterliyor.  ",
+            infoEmpty: "Kayıt Bulunmamaktadır.",
+            infoFiltered: "(filtered from _MAX_ total records)"
+        }
     });
     /*new $.fn.dataTable.FixedHeader(table);*/
 
@@ -73,10 +80,7 @@ $(document).ready(function () {
                 }
             },
             errorPlacement: function (error, element) {
-                element.next().removeClass("error");
-                if (element.is("select")) {
-                    element.next().addClass("error");
-                }
+
                 element.attr('data-original-title', error.text());
                 $(".error").tooltip(
                     {
@@ -158,7 +162,6 @@ $(document).ready(function () {
             if (resp != undefined && resp.status == undefined) {
                 var response = JSON.parse(resp);
                 if (response.status = "success") {
-                    response = JSON.parse(resp);
                     bindTable(response.data);
                     openModal(response.message);
                     clearForm();
@@ -178,9 +181,7 @@ $(document).ready(function () {
         })
     })
 
-    $(document).on('click', '.fa-remove', function () {
-        openDeleteConfirmModal(this.id)
-    });
+
 
     function bindTable(data) {
         table.destroy();
@@ -192,6 +193,13 @@ $(document).ready(function () {
             language: 'tr',
             lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
             data: data,
+            language: {
+                lengthMenu: "Sayfada _MENU_ Göster",
+                zeroRecords: "Kayıt Bulunmamaktadır.",
+                info: "Sayfa _PAGE_ Gösterliyor.  ",
+                infoEmpty: "Kayıt Bulunmamaktadır.",
+                infoFiltered: "(filtered from _MAX_ total records)"
+            },
             aoColumns: [
                 {'mData': "employeeId"},
                 {'mData': "employeeName"},

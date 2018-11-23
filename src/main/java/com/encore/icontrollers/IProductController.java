@@ -22,7 +22,7 @@ public interface IProductController {
     ModelAndView productView(HttpServletRequest request, HttpServletResponse response) ;
 
     @Secured("ROLE_USER")
-    @RequestMapping(value="/secured/user/product/add",method = RequestMethod.GET)
+    @RequestMapping(value="/secured/user/product/add",method = RequestMethod.POST)
     @ResponseBody
     Object addProductView(@RequestBody AddProductRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) ;
 

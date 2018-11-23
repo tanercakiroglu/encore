@@ -8,11 +8,11 @@ public class GetFileResponse {
 
     private String fileName;
 
-    private byte[] fileData;
+    private String fileData;
 
     private String fileType;
 
-    public GetFileResponse(Long id, String fileName, byte[] fileData, String fileType) {
+    public GetFileResponse(Long id, String fileName,String fileData, String fileType) {
         this.id = id;
         this.fileName = fileName;
         this.fileData = fileData;
@@ -43,11 +43,11 @@ public class GetFileResponse {
         this.fileName = fileName;
     }
 
-    public byte[] getFileData() {
+    public String getFileData() {
         return fileData;
     }
 
-    public void setFileData(byte[] fileData) {
+    public void setFileData(String fileData) {
         this.fileData = fileData;
     }
 }

@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     $body = $("body");
-    $.validator.setDefaults({ignore: []});
+   /* $.validator.setDefaults({ignore: []});*/
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
             xhr.setRequestHeader("faces-request", "partial/ajax");
@@ -31,6 +31,13 @@ $(document).ready(function () {
     }, "bu alan zorunludur");
 
 
+    jQuery.validator.addMethod("decimalFormat",
+        function (value, element, params) {
+            var decimal=  /^[-+]?[0-9]+\.[0-9]{2}$/s;
+            return (value.match(decimal));
+        },('Tutar girişleri 1221.23 formatında olmalıdır. '));
+
+
     jQuery.validator.addMethod("greaterThan",
         function (value, element, params) {
 
@@ -49,6 +56,10 @@ $(document).ready(function () {
         ajaxStop: function () {
             $body.removeClass("loading");
         }
+    });
+
+    $(document).on('click', '.fa-remove', function () {
+        openDeleteConfirmModal(this.id)
     });
 
     $(document).ajaxSuccess(function (event, request, settings) {
@@ -89,4 +100,31 @@ function openDeleteConfirmModal(id) {
 
 function closeDeleteConfirmModal() {
     $('#confirm-delete').modal('hide');
+}
+
+function  openDocument(body,name) {
+    var blob = new Blob([_base64ToArrayBuffer([body])]);
+    var link = document.createElement('a');
+    // Browsers that support HTML5 download attribute
+    if (link.download !== undefined) {
+        url = URL.createObjectURL(blob);
+        var fileName =name;
+        link.setAttribute('href', url);
+        link.setAttribute('download', fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+}
+
+function _base64ToArrayBuffer(base64) {
+    var binary_string = window.atob(base64);
+    var len = binary_string.length;
+    var bytes = new Uint8Array(len);
+    for (var i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes.buffer;
 }

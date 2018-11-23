@@ -147,7 +147,11 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-group text-right">
+                        <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Kaydet
+                        </button>
+                        <button id="clear_btn" type="button" class="btn submit_btn">Temizle</button>
+                    </div>
                 </div>
             </div>
         </form>

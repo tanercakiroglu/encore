@@ -12,6 +12,7 @@ public class File {
     @Column(name = "file_name")
     private String fileName;
 
+    @Lob
     @Column(name = "file_data")
     private byte[] fileData;
 

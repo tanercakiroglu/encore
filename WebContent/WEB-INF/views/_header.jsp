@@ -45,7 +45,7 @@
             <div class="container box_1620">
 
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="${pageContext.request.contextPath}/app/home"/><div style="color: white;font-weight: bold;font-size:larger;">ENCORE</div>
+                <a class="navbar-brand logo_h" href="${pageContext.request.contextPath}/app/home"/><a class="text-left" style="color: white;font-weight: bold;font-size:larger;">ENCORE</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

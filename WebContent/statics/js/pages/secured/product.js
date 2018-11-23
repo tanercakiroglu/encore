@@ -10,6 +10,226 @@ $(document).ready(function () {
         }
     });
 
+
+    $(function () {
+        $('#productForm').validate({
+            rules: {
+                productName: {
+                    required: true
+                },
+                productType: {
+                    valueEquals: "Seçiniz"
+                },
+                productOwner: {
+                    required: true
+                },
+                productHeight: {
+                    required: true
+                },
+                productWeight: {
+                    required: true
+                },
+                productDepth: {
+                    required: true
+                },
+                productBuyPrice: {
+                    required: true,
+                    decimalFormat: true
+
+                },
+                productSellPrice: {
+                    required: true,
+                    decimalFormat: true
+                },
+                productSupplier: {
+                    required: true
+                }
+            },
+            messages: {
+                productName: {
+                    required: "Ürün adı alanı zorunludur."
+                },
+                productType: {
+                    valueEquals: "Ürün tipi alanı zorunludur."
+                },
+                productOwner: {
+                    required: "Ürün sorumlusu alanı zorunludur "
+                },
+                productHeight: {
+                    required: "Ürün boyu alanı zorunludur ve numerik olması gerekir."
+                },
+                productWeight: {
+                    required: "Ürün eni alanı zorunludur ve numeric olması gerekir."
+                },
+                productDepth: {
+                    required: "Ürün yüksekliği alanı zorunludur  ve numeric olması gerekir."
+                },
+                productBuyPrice: {
+                    required: "Alış fiyatı alanı zorunludur ve 1221.23 formatında olmalıdır.",
+                    decimalFormat: "Tutar girişleri 1221.23 formatında olmalıdır."
+                },
+                productSellPrice: {
+                    required: "Satış fiyatı alanı zorunludur ve 1221.23 formatında olmalıdır.",
+                    decimalFormat: "Tutar girişleri 1221.23 formatında olmalıdır."
+                },
+                productSupplier: {
+                    required: "Ürün tedarikcisi alanı zorunludur."
+                }
+            },
+            errorPlacement: function (error, element) {
+
+                element.attr('data-original-title', error.text());
+                $(".error").tooltip(
+                    {
+                        tooltipClass: "ttError"
+                    });
+            },
+            submitHandler: function (form) {
+                var request = {
+                    "id": form.id.value,
+                    "productName": form.productName.value,
+                    "productType": form.productType.value,
+                    "productOwner": form.productOwner.value,
+                    "productHeight": form.productHeight.value,
+                    "productWeight": form.productWeight.value,
+                    "productDepth": form.productDepth.value,
+                    "productBuyPrice": form.productBuyPrice.value,
+                    "productSellPrice": form.productSellPrice.value,
+                    "productSupplier": form.productSupplier.value
+                };
+
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(request),
+                    dataType: 'json',
+                    url: form.baseURI + "/add",
+                    contentType: "application/json; charset=utf-8",
+                }).done(function (resp, status, jqXHR) {
+                    if (resp != undefined && resp.status == undefined) {
+                        var response = JSON.parse(resp);
+                        if (response.status = "success") {
+                            bindTable(response.data);
+                            clearForm();
+                            openModal(response.message);
+                        }
+                    }
+                    if (resp.status == "business_error") {
+                        openModal(resp.message);
+                    }
+                }).fail(function (resp, status, err) {
+                    var response;
+                    if (resp.status === 400) {
+                        response = JSON.parse(resp.responseJSON);
+                    } else {
+                        response = JSON.parse(resp.responseText);
+                    }
+                    openModal(response.message);
+                })
+            }
+        });
+    })
+
+    $(document).on('click', '.confirmDelete', function () {
+        closeDeleteConfirmModal();
+        var id=$("#confirmDelete").attr("data-id");
+        $.ajax({
+            type: "POST",
+            data: id,
+            dataType: 'json',
+            url: webContextPath + "/secured/user/product/remove?id="+id,
+            contentType: "application/json; charset=utf-8"
+        }).done(function (resp, status, jqXHR) {
+            if (resp != undefined && resp.status == undefined) {
+                var response = JSON.parse(resp);
+                if (response.status = "success") {
+                    bindTable(response.data);
+                    openModal(response.message);
+                    clearForm();
+                }
+            } else if (resp.status == "business_error") {
+                openModal(resp.message);
+            }
+
+        }).fail(function (resp, status, err) {
+            var response;
+            if (resp.status === 400) {
+                response = JSON.parse(resp.responseJSON);
+            } else {
+                response = JSON.parse(resp.responseText);
+            }
+            openModal(response.message);
+        })
+    })
+
+
+    function bindTable(data) {
+        table.destroy();
+        table = $('#products').DataTable({
+            responsive: true,
+            searching: true,
+            paging: true,
+            bInfo: false,
+            language: 'tr',
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            data: data,
+            language: {
+                lengthMenu: "Sayfada _MENU_ Göster",
+                zeroRecords: "Kayıt Bulunmamaktadır.",
+                info: "Sayfa _PAGE_ Gösterliyor.  ",
+                infoEmpty: "Kayıt Bulunmamaktadır.",
+                infoFiltered: "(filtered from _MAX_ total records)"
+            },
+            aoColumns: [
+                {'mData': "id"},
+                {'mData': "productName"},
+                {'mData': "productOwner"},
+                {
+                    'mRender': function (data, type, row) {
+                        return $("#productType option[value=" + (row.productType) + "]").text();
+                    }
+                },
+                {'mData': "productHeight"},
+                {'mData': "productWeight"},
+                {'mData': "productDepth"},
+                {'mData': "productBuyPrice"},
+                {'mData': "productSellPrice"},
+                {'mData': "productSupplier"},
+                {
+                    'mRender': function (data, type, row) {
+                        return '<i id="' + row.id + '"class="fa fa-edit fa-2x"></i>';
+                    }
+                },
+                {
+                    'mRender': function (data, type, row) {
+                        return '<i id="' + row.id + '"class="fa fa-remove fa-2x"></i>';
+                    }
+                },
+                {
+                    'mRender': function (data, type, row) {
+                        return '<i id="' + row.fileId + '"class="fa fa-file fa-2x"></i>';
+                    }
+                }
+            ]
+        });
+    }
+
+
+    $(document).on('click', '#clear_btn', function () {
+        clearForm();
+    })
+
+    function clearForm() {
+        $(':input', '#productForm')
+            .not(':button, :submit, :reset, :hidden')
+            .val('')
+            .prop('checked', false);
+
+        $("#productType").val($("#productType option:first").val());
+    }
+
+
+    /*  upload file  */
+
     var form = $('#file-form');
     var fileSelect = $('#file-select');
     var uploadButton = $('#upload-button');
@@ -37,11 +257,11 @@ $(document).ready(function () {
                 contentType: false,
                 type: 'POST',
                 url: webContextPath + "/secured/user/product/file/add",
-               }).done(function (resp, status, jqXHR) {
+            }).done(function (resp, status, jqXHR) {
                 if (resp != undefined && resp.status == undefined) {
                     var response = JSON.parse(resp);
+                    response = JSON.parse(response);
                     if (response.status = "success") {
-                        response = JSON.parse(resp);
                         openModal(response.message);
                     }
                 } else if (resp.status == "business_error") {
@@ -56,6 +276,7 @@ $(document).ready(function () {
                 }
                 openModal(response.message);
             })
+            uploadButton.text("Upload");
         }
     })
 
@@ -65,25 +286,13 @@ $(document).ready(function () {
             type: "GET",
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
-            url: webContextPath + "/secured/user/product/file/get?id="+id,
+            url: webContextPath + "/secured/user/product/file/get?id=" + id,
         }).done(function (resp, status, jqXHR) {
             if (resp != undefined && resp.status == undefined) {
                 var response = JSON.parse(resp);
                 if (response.status = "success") {
                     response = JSON.parse(resp);
-                    var blob = new Blob([response.data.fileData]);
-                    var link = document.createElement('a');
-                   // Browsers that support HTML5 download attribute
-                    if (link.download !== undefined) {
-                        url = URL.createObjectURL(blob);
-                        var fileName = response.data.fileName;
-                        link.setAttribute('href', url);
-                        link.setAttribute('download', fileName);
-                        link.style.visibility = 'hidden';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
+                    openDocument(response.data.fileData, response.data.fileName);
                 }
             } else if (resp.status == "business_error") {
                 openModal(resp.message);

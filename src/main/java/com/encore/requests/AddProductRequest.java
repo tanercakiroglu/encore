@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class AddProductRequest {
 
-    private Long employeeId;
+    private Long id;
 
     private String productName;
 
@@ -24,18 +24,17 @@ public class AddProductRequest {
 
     private String productSupplier;
 
-    private byte[] fileData;
 
     public AddProductRequest() {
         super();
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -110,11 +109,4 @@ public class AddProductRequest {
         this.productSupplier = productSupplier;
     }
 
-    public byte[] getFileData() {
-        return fileData;
-    }
-
-    public void setFileData(byte[] fileData) {
-        this.fileData = fileData;
-    }
-}
+ }

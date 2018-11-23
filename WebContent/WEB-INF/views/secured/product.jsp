@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group input-group">
-                                <select class="form-control" id="employeeType">
+                                <select class="form-control" id="productType" name="productType">
                                     <option value="Seçiniz" selected>Seçiniz</option>
                                     <c:forEach items="${productTypeSelectList}" var="item" varStatus="status">
                                         <option value="${item.key}">${item.value}</option>
@@ -106,15 +106,6 @@
                                        placeholder="Ürün Yüksekliği(cm örn 180)">
                             </div>
                         </div>
-                        <form id="file-form">
-                            <div class="col-md-8">
-                                <input type="file" id="file-select" name="files[]" multiple/>
-                            </div>
-                            <div class="col-md-4">
-                                <button type="button" class="btn submit_btn text-right" id="upload-button">Upload</button>
-                            </div>
-                        </form>
-
                     </div>
                 </div>
 
@@ -150,6 +141,20 @@
 
                     </div>
                 </div>
+                <form id="file-form">
+                    <div class="col-md-12">
+                        <input type="file" id="file-select" name="files[]" multiple/>
+                        <button type="button" class="btn submit_btn text-right" id="upload-button">Upload
+                        </button>
+                    </div>
+                </form>
+                    <div class="col-md-12 ">
+                        <div class="form-group text-right ">
+                            <button value="submit" type="submit" id="submit_btn" class="btn submit_btn">Kaydet
+                            </button>
+                            <button id="clear_btn" type="button" class="btn submit_btn">Temizle</button>
+                        </div>
+                </div>
             </div>
         </form>
         <div class="row">
@@ -176,7 +181,7 @@
                         <tbody>
                         <c:forEach items="${products}" var="item">
                             <tr>
-                                <td>${item.id}</td>
+                                <td>URN-${item.id}</td>
                                 <td>${item.productName}</td>
                                 <td>${item.productSupplier}</td>
                                 <td>${productTypeSelectList[item.productType]}</td>
