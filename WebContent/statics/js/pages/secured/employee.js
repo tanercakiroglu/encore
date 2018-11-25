@@ -131,23 +131,6 @@ $(document).ready(function () {
         });
     })
 
-    $(document).on('click', '.fa-edit', function () {
-        var data = table.row($(this).parents('tr')).data();
-        var keys = Object.keys(data);
-
-        $("#employeeId").val(data[keys[0]]);
-        $("#employeeName").val(data[keys[1]]);
-        $("#employeeSurname").val(data[keys[2]]);
-        if ($.isNumeric(data[keys[3]]))
-            $("#employeeType").val(data[keys[3]]);
-        else
-            $("#employeeType option:contains(" + data[keys[3]] + ")").attr('selected', 'selected');
-        $('#employeeBirthDay').datepicker("setDate", convertFromTimeStampToDate(data[keys[4]]));
-        $("#employeePassportId").val(data[keys[5]]);
-        $("#employeePhone").val(data[keys[6]]);
-        $("#employeeMail").val(data[keys[7]]);
-        $("#employeeAddress").val(data[keys[8]]);
-    })
 
     $(document).on('click', '.confirmDelete', function () {
         closeDeleteConfirmModal();
@@ -179,6 +162,29 @@ $(document).ready(function () {
             }
             openModal(response.message);
         })
+    })
+
+    $(document).on('click', '.fa-edit', function () {
+        var data;
+        if($(this).parents('tr').attr("class")=="child"){
+            data = table.row($(this)).data();
+        }else{
+            data = table.row($(this).parents('tr')).data();
+        }
+        var keys = Object.keys(data);
+
+        $("#employeeId").val(data[keys[0]]);
+        $("#employeeName").val(data[keys[1]]);
+        $("#employeeSurname").val(data[keys[2]]);
+        if ($.isNumeric(data[keys[3]]))
+            $("#employeeType").val(data[keys[3]]);
+        else
+            $("#employeeType option:contains(" + data[keys[3]] + ")").attr('selected', 'selected');
+        $('#employeeBirthDay').datepicker("setDate", convertFromTimeStampToDate(data[keys[4]]));
+        $("#employeePassportId").val(data[keys[5]]);
+        $("#employeePhone").val(data[keys[6]]);
+        $("#employeeMail").val(data[keys[7]]);
+        $("#employeeAddress").val(data[keys[8]]);
     })
 
 

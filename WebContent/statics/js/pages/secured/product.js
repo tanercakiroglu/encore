@@ -161,6 +161,31 @@ $(document).ready(function () {
         })
     })
 
+    $(document).on('click', '.fa-edit', function () {
+        var data;
+        if($(this).parents('tr').attr("class")=="child"){
+            data = table.row($(this)).data();
+        }else{
+            data = table.row($(this).parents('tr')).data();
+        }
+        var keys = Object.keys(data);
+
+        $("#id").val(data[keys[0]]);
+        $("#productName").val(data[keys[1]]);
+        $("#productSupplier").val(data[keys[2]]);
+        if ($.isNumeric(data[keys[3]]))
+            $("#productType").val(data[keys[3]]);
+        else
+            $("#productType option:contains(" + data[keys[3]] + ")").attr('selected', 'selected');
+        $('#productHeight').val(data[keys[4]]);
+        $("#productWeight").val(data[keys[5]]);
+        $("#productDepth").val(data[keys[6]]);
+        $("#productOwner").val(data[keys[7]]);
+        $("#productBuyPrice").val(data[keys[8]]);
+        $("#productSellPrice").val(data[keys[9]]);
+    })
+
+
 
     function bindTable(data) {
         table.destroy();
@@ -182,7 +207,7 @@ $(document).ready(function () {
             aoColumns: [
                 {'mData': "id"},
                 {'mData': "productName"},
-                {'mData': "productOwner"},
+                {'mData': "productSupplier"},
                 {
                     'mRender': function (data, type, row) {
                         return $("#productType option[value=" + (row.productType) + "]").text();
@@ -191,9 +216,9 @@ $(document).ready(function () {
                 {'mData': "productHeight"},
                 {'mData': "productWeight"},
                 {'mData': "productDepth"},
+                {'mData': "productOwner"},
                 {'mData': "productBuyPrice"},
                 {'mData': "productSellPrice"},
-                {'mData': "productSupplier"},
                 {
                     'mRender': function (data, type, row) {
                         return '<i id="' + row.id + '"class="fa fa-edit fa-2x"></i>';

@@ -24,10 +24,10 @@ public interface IProductController {
     @Secured("ROLE_USER")
     @RequestMapping(value="/secured/user/product/add",method = RequestMethod.POST)
     @ResponseBody
-    Object addProductView(@RequestBody AddProductRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) ;
+    Object addProduct(@RequestBody AddProductRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) ;
 
     @Secured("ROLE_USER")
     @RequestMapping(value="/secured/user/product/remove",method = RequestMethod.POST,produces = {MediaType.APPLICATION_JSON_UTF8_VALUE} )
     @ResponseBody
-    Object removeEmployee(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) ;
+    Object removeProduct(@RequestBody String id, HttpServletRequest request, HttpServletResponse response) ;
 }

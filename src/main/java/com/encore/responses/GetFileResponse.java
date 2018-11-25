@@ -1,7 +1,5 @@
 package com.encore.responses;
 
-import javax.persistence.Column;
-
 public class GetFileResponse {
 
     private Long id;

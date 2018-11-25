@@ -40,7 +40,7 @@ public class ProductController extends BaseController implements IProductControl
     }
 
     @Override
-    public Object addProductView(@RequestBody AddProductRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) {
+    public Object addProduct(@RequestBody AddProductRequest req, HttpServletRequest request, HttpServletResponse response, Errors errors) {
         validator.validate(req, errors);
         if (errors.hasErrors())
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(getJSONValidationResult(errors));
@@ -50,9 +50,9 @@ public class ProductController extends BaseController implements IProductControl
     }
 
     @Override
-    public Object removeEmployee(String id, HttpServletRequest request, HttpServletResponse response) {
+    public Object removeProduct(String id, HttpServletRequest request, HttpServletResponse response) {
         if (StringUtils.isEmpty(id))
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONUtil.getJSONResultWithValidationError("Silinecek satırın numarası boş olamaz"));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONUtil.getJSONResultWithValidationError("Silinecek satırın numarası boş olamaz."));
         productService.removeProduct(id);
         List<Product> productList = productService.getAllProduct();
         return ResponseEntity.status(HttpStatus.OK).body(JSONUtil.getJSONResultWithSuccess(productList));
